@@ -27,4 +27,13 @@ public class News {
     public void setArticles(ArrayList<Article> articles) {
         this.articles = articles;
     }
+
+    public void addJournalist(Journalist journalist){
+        this.journalists.add(journalist);
+    }
+
+    public void addArticle(Article article){
+        this.articles.add(article);
+    }
+
 }
