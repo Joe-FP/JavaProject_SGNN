@@ -104,15 +104,15 @@ public class JournalistController {
 //            return null;
 //        }, velocityTemplateEngine);
 //
-//        //Delete the current Journalist
-//
-//        post("/journalists/:id/delete", (req, res) ->{
-//            String strId = req.params(":id");
-//            Integer intId = Integer.parseInt(strId);
-//            Journalist journalistToDelete = DBHelper.find(intId, Journalist.class);
-//            DBHelper.delete(journalistToDelete);
-//            res.redirect("/journalists");
-//            return null;
-//        }, velocityTemplateEngine);
+        //Delete the current Journalist
+
+        post("/journalists/:id/delete", (req, res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Journalist journalistToDelete = DBHelper.find(intId, Journalist.class);
+            DBHelper.delete(journalistToDelete);
+            res.redirect("/journalists");
+            return null;
+        }, velocityTemplateEngine);
     }
 }
