@@ -5,25 +5,31 @@ import java.util.Date;
 public class Article {
 
     private int id;
+    private Journalist journalist;
     private String title;
     private CategoryType categoryType;
-    private Journalist journalist;
-    private Date publishDate;
+    private String imagePath;
     private String articleSummary;
     private String fullArticle;
     private int articleHits;
+    private Date publishDate;
+    private int rating;
+    private boolean accepted;
 
     public Article(){
 
     }
 
-    public Article(String title, CategoryType categoryType, Journalist journalist, Date publishDate, String articleSummary, String fullArticle) {
+    public Article(Journalist journalist, String title, CategoryType categoryType, String imagePath, String articleSummary, String fullArticle) {
+        this.journalist = journalist;
         this.title = title;
         this.categoryType = categoryType;
-        this.journalist = journalist;
-        this.publishDate = publishDate;
+        this.imagePath = imagePath;
         this.articleSummary = articleSummary;
         this.fullArticle = fullArticle;
+        this.articleHits = 0;
+        this.rating = 0;
+        this.accepted = false;
     }
 
     public int getId() {
@@ -32,6 +38,14 @@ public class Article {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Journalist getJournalist() {
+        return journalist;
+    }
+
+    public void setJournalist(Journalist journalist) {
+        this.journalist = journalist;
     }
 
     public String getTitle() {
@@ -50,20 +64,12 @@ public class Article {
         this.categoryType = categoryType;
     }
 
-    public Journalist getJournalist() {
-        return journalist;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setJournalist(Journalist journalist) {
-        this.journalist = journalist;
-    }
-
-    public Date getPublishDate() {
-        return publishDate;
-    }
-
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public String getArticleSummary() {
@@ -89,4 +95,33 @@ public class Article {
     public void setArticleHits(int articleHits) {
         this.articleHits = articleHits;
     }
+
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public boolean getAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+
+    public void addArticleHit(){
+        this.articleHits ++;
+    }
+
 }

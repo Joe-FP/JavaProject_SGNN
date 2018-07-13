@@ -1,3 +1,4 @@
+import db.DBHelper;
 import models.Journalist;
 
 public class Runner {
