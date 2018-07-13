@@ -74,11 +74,11 @@ public class Journalist {
         this.journalismType = journalismType;
     }
 
-    public double getAverageRating(){
-        for( Article article : this.articles){
-            this.rating.add(article.getRating());
-        }
-        double avgRating = (double)rating / (double)articles.length;
-        return avgRating;
-    }
+//    public double getAverageRating(){
+//        for( Article article : this.articles){
+//            this.rating.add(article.getRating());
+//        }
+//        double avgRating = (double)rating / (double)articles.length;
+//        return avgRating;
+//    }
 }
