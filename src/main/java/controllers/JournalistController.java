@@ -51,15 +51,15 @@ public class JournalistController {
 //
 //        //Show an individual Journalist
 //
-//        get("journalists/:id", (req, res) ->{
-//            String strId = req.params(":id");
-//            Integer intId = Integer.parseInt(strId);
-//            Journalist journalist = DBHelper.find(intId, Journalist.class);
-//            HashMap<String, Object> model = new HashMap<>();
-//            model.put("journalist", journalist);
-//            model.put("template", "templates/journalists/show.vtl");
-//            return new ModelAndView(model, "templates/layout.vtl");
-//        }, velocityTemplateEngine);
+        get("journalists/:id", (req, res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Journalist journalist = DBHelper.find(intId, Journalist.class);
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("journalist", journalist);
+            model.put("template", "templates/journalists/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
 //
 //        //Edit current Journalist
 //
