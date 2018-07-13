@@ -12,14 +12,16 @@ public class Journalist {
     private String name;
     private ArrayList<Article> articles;
     private int rating;
-    private
+    private JournalismType journalismType;
 
     public Journalist() {
     }
 
-    public Journalist(String name) {
+    public Journalist(String name, JournalismType journalismType) {
         this.name = name;
         this.articles = new ArrayList<Article>();
+        this.rating = 0;
+        this.journalismType = journalismType;
     }
 
     @Id
@@ -52,5 +54,31 @@ public class Journalist {
 
     public void addArticle(Article article){
         this.articles.add(article);
+    }
+
+    @Column(name = "rating")
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    @Column(name ="journalismType")
+    public JournalismType getJournalismType() {
+        return journalismType;
+    }
+
+    public void setJournalismType(JournalismType journalismType) {
+        this.journalismType = journalismType;
+    }
+
+    public double getAverageRating(){
+        for( Article article : this.articles){
+            this.rating.add(article.getRating());
+        }
+        double avgRating = (double)rating / (double)articles.length;
+        return avgRating;
     }
 }
