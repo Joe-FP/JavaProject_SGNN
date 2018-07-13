@@ -1,6 +1,7 @@
 package controllers;
 
 import db.DBHelper;
+import models.Article;
 import models.JournalismType;
 import models.Journalist;
 import spark.ModelAndView;
@@ -68,8 +69,14 @@ public class JournalistController {
             Integer intId = Integer.parseInt(strId);
             Journalist journalist = DBHelper.find(intId, Journalist.class);
 
+            // Below can possibly display all articles that the journalist has written. Perhaps write it
+            // in a DBJournalist file?
+            // Article article = DBHelper.getAllArticlesWrittenByJournalist(journalist.getArticles());
+
             HashMap<String, Object> model = new HashMap<>();
             model.put("journalist", journalist);
+            // if the Article return works above need to include below to bring them back.
+//            model.put("article", article);
             model.put("template", "templates/journalist/edit.vtl");
 
             return new ModelAndView(model, "templates/layout.vtl");
