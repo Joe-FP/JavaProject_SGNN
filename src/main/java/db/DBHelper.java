@@ -82,6 +82,7 @@ public class DBHelper {
                 session.delete(result);
             }
             transaction.commit();
+
         } catch (HibernateException ex) {
             transaction.rollback();
             ex.printStackTrace();
