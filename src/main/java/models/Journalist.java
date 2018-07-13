@@ -11,6 +11,8 @@ public class Journalist {
     private int id;
     private String name;
     private ArrayList<Article> articles;
+    private int rating;
+    private
 
     public Journalist() {
     }
