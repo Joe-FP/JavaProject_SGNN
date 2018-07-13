@@ -21,7 +21,6 @@ public class MainController {
 
         JournalistController journalistController = new JournalistController();
         ArticleController articleController = new ArticleController();
-        NewsController newsController = new NewsController();
 
         get("/", (req, res) -> {
             HashMap<String, Object> model = new HashMap();

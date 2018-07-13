@@ -1,5 +1,7 @@
 package db;
 
+import models.Article;
+import models.Journalist;
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 
@@ -117,5 +119,13 @@ public class DBHelper {
 
     }
 
+    public static List<Article> getAllArticlesWrittenByJournalist(Journalist journalist){
+        session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Article.class);
+        criteria.add(Restrictions.eq("journalist", journalist));
+        return getList(criteria);
+    }
 
-}
+
+
+    }

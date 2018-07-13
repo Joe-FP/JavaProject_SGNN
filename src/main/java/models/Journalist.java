@@ -78,6 +78,7 @@ public class Journalist {
         this.journalismType = journalismType;
     }
 
+
     public double averageRating(){
         for( Article article : this.articles){
             this.rating = this.rating + (article.getRating());
@@ -86,4 +87,5 @@ public class Journalist {
         setRating(avgRating);
         return avgRating;
     }
+
 }
