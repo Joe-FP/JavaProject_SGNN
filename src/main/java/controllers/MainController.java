@@ -6,6 +6,7 @@ import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.HashMap;
 
+import static spark.Spark.get;
 import static spark.SparkBase.staticFileLocation;
 import static spark.route.HttpMethod.get;
 
@@ -23,7 +24,7 @@ public class MainController {
         NewsController newsController = new NewsController();
 
         get("/", (req, res) -> {
-            HashMap<String, Object> model = new HashMap<>();
+            HashMap<String, Object> model = new HashMap();
 
             model.put("template", "templates/index.vtl");
 
