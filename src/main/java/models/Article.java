@@ -1,7 +1,12 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name ="articles")
 public class Article {
 
     private int id;
@@ -32,6 +37,9 @@ public class Article {
         this.accepted = false;
     }
 
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -40,6 +48,9 @@ public class Article {
         this.id = id;
     }
 
+    @ManyToOne
+    @JoinColumn(name="journalist_id", nullable=false)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     public Journalist getJournalist() {
         return journalist;
     }
@@ -48,6 +59,7 @@ public class Article {
         this.journalist = journalist;
     }
 
+    @Column(name="title")
     public String getTitle() {
         return title;
     }
@@ -56,6 +68,7 @@ public class Article {
         this.title = title;
     }
 
+    @Column(name="categoryType")
     public CategoryType getCategoryType() {
         return categoryType;
     }
@@ -64,6 +77,7 @@ public class Article {
         this.categoryType = categoryType;
     }
 
+    @Column(name="imagePath")
     public String getImagePath() {
         return imagePath;
     }
@@ -72,6 +86,7 @@ public class Article {
         this.imagePath = imagePath;
     }
 
+    @Column(name="articleSummary")
     public String getArticleSummary() {
         return articleSummary;
     }
@@ -80,6 +95,7 @@ public class Article {
         this.articleSummary = articleSummary;
     }
 
+    @Column(name="fullArticle")
     public String getFullArticle() {
         return fullArticle;
     }
@@ -88,6 +104,7 @@ public class Article {
         this.fullArticle = fullArticle;
     }
 
+    @Column(name="articleHits")
     public int getArticleHits() {
         return articleHits;
     }
@@ -96,6 +113,7 @@ public class Article {
         this.articleHits = articleHits;
     }
 
+    @Column(name="publishDate")
     public Date getPublishDate() {
         return publishDate;
     }
@@ -104,6 +122,7 @@ public class Article {
         this.publishDate = publishDate;
     }
 
+    @Column(name="rating")
     public int getRating() {
         return rating;
     }
@@ -112,6 +131,7 @@ public class Article {
         this.rating = rating;
     }
 
+    @Column(name="accepted")
     public boolean getAccepted() {
         return accepted;
     }
