@@ -42,8 +42,8 @@ public class JournalistController {
         post("/journalists", (req, res) ->{
             String name = req.queryParams("name");
             String type = req.queryParams("journalismType");
-            JournalismType journalismType = JournalismType.getValue(type);
-            Journalist newJournalist = new Journalist(name, type);
+            JournalismType journalismType = JournalismType.valueOf(type);
+            Journalist newJournalist = new Journalist(name, journalismType);
             DBHelper.save(newJournalist);
             res.redirect("/journalists");
             return null;

@@ -5,8 +5,9 @@ import models.*;
 public class Seeds {
 
     public static void seedData(){
-        DBHelper.deleteAll(Journalist.class);
         DBHelper.deleteAll(Article.class);
+
+        DBHelper.deleteAll(Journalist.class);
         DBHelper.deleteAll(News.class);
 
         Journalist journalist1 = new Journalist("Vivian Rook", JournalismType.BROADCAST);
