@@ -1,7 +1,5 @@
-import models.Article;
-import models.CategoryType;
-import models.Journalist;
-import models.News;
+import db.DBHelper;
+import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,17 +9,17 @@ import static org.junit.Assert.assertEquals;
 
 public class NewsTest {
 
-
     Journalist journalist;
     Article article;
     News news;
 
     @Before
     public void setUp() throws Exception {
-        Date date = new Date(2018, 7, 7);
-        journalist = new Journalist("Ron Burgundy");
-        article = new Article("Title", CategoryType.BUSINESS, journalist, date,"Article Summary", "Full Article");
-        news = new News();
+        news = new News("SGNN");
+        journalist = new Journalist("Ron Burgundy", JournalismType.BROADCAST);
+        DBHelper.save(journalist);
+        article = new Article(journalist, "title", CategoryType.POLITICS, "location.jpg", "summary", "full article");
+        DBHelper.save(article);
     }
 
     @Test

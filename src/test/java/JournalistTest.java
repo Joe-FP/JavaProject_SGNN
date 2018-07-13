@@ -1,3 +1,4 @@
+import db.DBHelper;
 import models.Article;
 import models.CategoryType;
 import models.JournalismType;
@@ -16,20 +17,19 @@ public class JournalistTest {
 
   @Before
   public void setUp() throws Exception {
-    Date date = new Date(2018, 7, 7);
-    journalist = new Journalist("Ron Burgundy", JournalismType.INVESTIGATIVE);
-    article = new Article("Title", CategoryType.BUSINESS, journalist, date,"Article Summary", "Full Article");
+    journalist = new Journalist("Ron Burgundy", JournalismType.BROADCAST);
+    article = new Article(journalist, "title", CategoryType.POLITICS, "location.jpg", "summary", "full article");
+    article.setRating(5);
+    journalist.addArticle(article);
   }
 
   @Test
   public void checkCanAddArticle() {
-    journalist.addArticle(article);
     assertEquals(1, journalist.getArticles().size());
   }
 
-    @Test
-    public void getAverageRating() {
-      journalist.addArticle(article);
-      assertEquals(5, journalist.getAverageRating());
-    }
+  @Test
+  public void getAverageRating() {
+    assertEquals(5, journalist.averageRating(), 0.1);
+  }
 }

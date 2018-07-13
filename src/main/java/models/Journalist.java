@@ -1,7 +1,10 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -10,8 +13,9 @@ public class Journalist {
 
     private int id;
     private String name;
-    private ArrayList<Article> articles;
-    private int rating;
+    private List<Article> articles;
+    // Journalist rating is the average of all article ratings by the journalist.
+    private double rating;
     private JournalismType journalismType;
 
     public Journalist() {
@@ -19,9 +23,9 @@ public class Journalist {
 
     public Journalist(String name, JournalismType journalismType) {
         this.name = name;
-        this.articles = new ArrayList<Article>();
         this.rating = 0;
         this.journalismType = journalismType;
+        this.articles = new ArrayList<Article>();
     }
 
     @Id
@@ -44,11 +48,13 @@ public class Journalist {
         this.name = name;
     }
 
-    public ArrayList<Article> getArticles() {
+    @OneToMany(mappedBy="journalist", fetch = FetchType.LAZY)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    public List<Article> getArticles() {
         return articles;
     }
 
-    public void setArticles(ArrayList<Article> articles) {
+    public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
 
@@ -57,11 +63,9 @@ public class Journalist {
     }
 
     @Column(name = "rating")
-    public int getRating() {
-        return rating;
-    }
+    public double getRating() { return rating; }
 
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 
@@ -74,11 +78,14 @@ public class Journalist {
         this.journalismType = journalismType;
     }
 
-//    public double getAverageRating(){
-//        for( Article article : this.articles){
-//            this.rating.add(article.getRating());
-//        }
-//        double avgRating = (double)rating / (double)articles.length;
-//        return avgRating;
-//    }
+
+    public double averageRating(){
+        for( Article article : this.articles){
+            this.rating = this.rating + (article.getRating());
+        }
+        double avgRating = this.rating / this.articles.size();
+        setRating(avgRating);
+        return avgRating;
+    }
+
 }
