@@ -94,7 +94,7 @@ public class ArticleController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
-        post("/articless/:id", (req, res) ->{
+        post("/articles/:id", (req, res) ->{
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Article article = DBHelper.find(intId, Article.class);
