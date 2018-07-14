@@ -49,7 +49,7 @@ public class Journalist {
     }
 
     @OneToMany(mappedBy="journalist", fetch = FetchType.LAZY)
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     public List<Article> getArticles() {
         return articles;
     }
