@@ -89,7 +89,7 @@ public class JournalistController {
 //
 //
 //            HashMap<String, Object> model = new HashMap<>();
-//            model.put("journalist", journalist);
+//            model.put("journalists", journalists);
 //
 //            model.put("template", "templates/journalist/edit.vtl");
 //
@@ -108,7 +108,7 @@ public class JournalistController {
 //            journalist.setJournalismType(type);
 //
 //            DBHelper.save(journalist);
-//            res.redirect("journalist/:id");
+//            res.redirect("journalists/:id");
 //            return null;
 //        }, velocityTemplateEngine);
 //
