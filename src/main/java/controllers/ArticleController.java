@@ -118,7 +118,7 @@ public class ArticleController {
             article.setFullArticle(fullArticle);
 
             DBHelper.save(article);
-            res.redirect("articles/:id");
+            res.redirect("/articles");
             return null;
         }, velocityTemplateEngine);
 
