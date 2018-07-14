@@ -11,17 +11,17 @@
             <th>Journalist</th>
             <th>Category</th>
             <th>Summary</th>
-            <th>Publish Date</th>
+            <!--<th>Publish Date</th>-->
             <th>Rating</th>
         </tr>
         #foreach ($article in $articles)
         <tr>
             <td>$article.getTitle()</td>
             <td>$article.getJournalist().getName()</td>
-            <td>$article.getCategoryType.getValue()</td>
+            <td>Category</td>
             <td>$article.getArticleSummary()</td>
-            <td>$article.getPublishDate()</td>
-            <td>%article.getRating()</td>
+            <!--<td>$article.getPublishDate()</td>-->
+            <td>$article.getRating()</td>
             <td>
                 <form action="/articles/$article.getId()" method="get">
                     <input type="submit" value="View"/>

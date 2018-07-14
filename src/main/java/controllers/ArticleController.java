@@ -8,6 +8,7 @@ import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -50,13 +51,15 @@ public class ArticleController {
             // Uncomment this line when Angelina finds a way to pass the list
             // of enum values into a vtl file (should return CategoryType).
             //CategoryType category = req.queryParams("category");
-          
+
+            //String publishDate = req.queryParams("publishDate");
             String imagePath = req.queryParams("imagePath");
             String summary = req.queryParams("summary");
             String fullArticle = req.queryParams("fullArticle");
             int journalist_id = Integer.parseInt(req.queryParams("journalist_id"));
             Journalist journalist = DBHelper.find(journalist_id, Journalist.class);
 
+            //Article article = new Article(journalist, title, publishDate, CategoryType.INDUSTRY, imagePath, summary, fullArticle);
             Article article = new Article(journalist, title, CategoryType.INDUSTRY, imagePath, summary, fullArticle);
             DBHelper.save(article);
             res.redirect("/articles");

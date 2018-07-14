@@ -17,7 +17,7 @@ public class Article {
     private String articleSummary;
     private String fullArticle;
     private int articleHits;
-    private Date publishDate;
+    private String publishDate;
     private int rating;
     private boolean accepted;
 
@@ -28,6 +28,7 @@ public class Article {
     public Article(Journalist journalist, String title, CategoryType categoryType, String imagePath, String articleSummary, String fullArticle) {
         this.journalist = journalist;
         this.title = title;
+        //this.publishDate = publishDate;
         this.categoryType = categoryType;
         this.imagePath = imagePath;
         this.articleSummary = articleSummary;
@@ -113,14 +114,14 @@ public class Article {
         this.articleHits = articleHits;
     }
 
-    @Column(name="publishDate")
-    public Date getPublishDate() {
-        return publishDate;
-    }
-
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
-    }
+//    @Column(name="publishDate")
+//    public String getPublishDate() {
+//        return publishDate;
+//    }
+//
+//    public void setPublishDate(String publishDate) {
+//        this.publishDate = publishDate;
+//    }
 
     @Column(name="rating")
     public int getRating() {
