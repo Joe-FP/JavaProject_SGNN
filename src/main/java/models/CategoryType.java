@@ -20,11 +20,11 @@ public enum CategoryType {
 
 
     private String type;
-    private List<CategoryType> enumTypes;
+    private List<CategoryType> enumValues;
 
     CategoryType(String type) {
         this.type = type;
-        this.enumTypes = new ArrayList<>();
+        this.enumValues = new ArrayList<>();
     }
 
     public String getType() {
@@ -32,10 +32,13 @@ public enum CategoryType {
     }
 
     public List<CategoryType> getEnumTypes() {
-        return enumTypes;
+        return enumValues;
     }
 
-    public void addEnumTypes(CategoryType categoryType){
-        enumTypes.add(categoryType);
+    public void addEnumTypes(){
+        for (CategoryType categoryType : this.enumValues){
+            enumValue.add(categoryType.getType());
+        }
+
     }
 }
