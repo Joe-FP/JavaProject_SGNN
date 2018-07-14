@@ -18,10 +18,10 @@
         <tr>
             <td>$article.getTitle()</td>
             <td>$article.getJournalist().getName()</td>
-            <td>category</td>
+            <td>$article.getCategoryType.getValue()</td>
             <td>$article.getArticleSummary()</td>
             <td>$article.getPublishDate()</td>
-            <td>$article.getRating()</td>
+            <td>%article.getRating()</td>
             <td>
                 <form action="/articles/$article.getId()" method="get">
                     <input type="submit" value="View"/>
@@ -31,4 +31,3 @@
         #end
     </table>
 </div>
-

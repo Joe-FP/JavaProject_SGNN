@@ -1,0 +1,45 @@
+<h1>Edit Article</h1>
+
+<form action="/articles/$article.getId()" method="post">
+    <label for="title">Headline:</label>
+    <input class="inputBox" type="text" name="title" id="title" value="$article.getTitle()" required="true">
+
+    <label for="journalist">Journalist:</label>
+    <select id="journalist" name="journalist">
+        #foreach( $journalist in $journalists )
+        <option value="$journalist.getId()"
+                #if ($journalist.getId() == $article.getJournalist().getId())
+                selected="selected"
+                #end>
+            $journalist.getName()</option>
+        #end
+    </select>
+
+
+    <!--<label for="categoryType">Category:</label>-->
+    <!--<select id="categoryType" name="categoryType">-->
+        <!--#foreach( $categoryType in $categoryTypes )-->
+        <!--<option value="$categoryType.getValue()"-->
+                <!--#if ($categoryType.getValue() == $article.getCategory().getValue())-->
+                <!--selected="selected"-->
+                <!--#end>-->
+            <!--$categoryType.getValue()</option>-->
+        <!--#end-->
+    <!--</select>-->
+
+    <label for="categoryType">Category:</label>
+    <input class="inputBox" type="text" name="categoryType" required="true" id="categoryType" value="$article.getCategoryType()" >
+
+
+    <label for="imagePath">Image:</label>
+    <input class="inputBox" type="file" name="imagePath" id="imagePath" value="$article.getImagePath()">
+
+    <label for="articleSummary">Article Summary:</label>
+    <input class="inputBox" type="text" name="articleSummary" id="articleSummary" value="$article.getArticleSummary()" required="true">
+
+    <label for="fullArticle">Full Article:</label>
+    <input class="inputBox" type="text" name="fullArticle" id="fullArticle" value="$article.getFullArticle()" required="true">
+
+    <input type="submit" value="Save" class="button">
+
+</form>
