@@ -6,7 +6,6 @@ public class Seeds {
 
     public static void seedData(){
         DBHelper.deleteAll(Article.class);
-
         DBHelper.deleteAll(Journalist.class);
         DBHelper.deleteAll(News.class);
 

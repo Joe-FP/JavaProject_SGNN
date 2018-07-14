@@ -35,24 +35,30 @@ public class JournalistController {
 
 
         //Show an individual Journalist
-
         get("journalists/:id", (req, res) ->{
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Journalist journalist = DBHelper.find(intId, Journalist.class);
 
-//            Below can possibly display all articles that the journalist has written. Perhaps write it
-////          in a DBJournalist file?
+            //Below can possibly display all articles that the journalist has written.
+            // Perhaps write it in a DBJournalist file?
             List<Article> articles= DBHelper.getAllArticlesWrittenByJournalist(journalist);
-
 
             HashMap<String, Object> model = new HashMap<>();
             model.put("journalist", journalist);
-
             //if the Article return works above need to include below to bring them back.
             model.put("articles", articles);
             model.put("template", "templates/journalists/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
+
+        //Delete the current Journalist
+        post("/journalists/:id/delete", (req, res) ->{
+            int id = Integer.parseInt(req.params(":id"));
+            Journalist journalistToDelete = DBHelper.find(id, Journalist.class);
+            DBHelper.delete(journalistToDelete);
+            res.redirect("/journalists");
+            return null;
         }, velocityTemplateEngine);
 
 
@@ -83,7 +89,7 @@ public class JournalistController {
 //
 //
 //            HashMap<String, Object> model = new HashMap<>();
-//            model.put("journalist", journalist);
+//            model.put("journalists", journalists);
 //
 //            model.put("template", "templates/journalist/edit.vtl");
 //
@@ -102,19 +108,11 @@ public class JournalistController {
 //            journalist.setJournalismType(type);
 //
 //            DBHelper.save(journalist);
-//            res.redirect("journalist/:id");
+//            res.redirect("journalists/:id");
 //            return null;
 //        }, velocityTemplateEngine);
 //
-        //Delete the current Journalist
-//
-        post("/journalists/:id/delete", (req, res) ->{
-            int id = Integer.parseInt(req.params(":id"));
-            Journalist journalistToDelete = DBHelper.find(id, Journalist.class);
-            DBHelper.delete(journalistToDelete);
-            res.redirect("/journalists");
-            return null;
-        }, velocityTemplateEngine);
+
 
     }
 }

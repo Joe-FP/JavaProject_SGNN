@@ -7,6 +7,7 @@ import models.Journalist;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,8 +33,35 @@ public class ArticleController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
-
         //New Article
+        get("/articles/new", (req, res) ->{
+            HashMap<String, Object> model = new HashMap<>();
+            List<Journalist> allJournalists = DBHelper.getAll(Journalist.class);
+            model.put("allJournalists", allJournalists);
+            model.put("template", "templates/articles/create.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
+
+
+        post("/articles", (req, res) ->{
+            String title = req.queryParams("title");
+
+            // req.queryParams("category") is currently returning a String.
+            // Uncomment this line when Angelina finds a way to pass the list
+            // of enum values into a vtl file (should return CategoryType).
+            //CategoryType category = req.queryParams("category");
+          
+            String imagePath = req.queryParams("imagePath");
+            String summary = req.queryParams("summary");
+            String fullArticle = req.queryParams("fullArticle");
+            int journalist_id = Integer.parseInt(req.queryParams("journalist_id"));
+            Journalist journalist = DBHelper.find(journalist_id, Journalist.class);
+
+            Article article = new Article(journalist, title, CategoryType.INDUSTRY, imagePath, summary, fullArticle);
+            DBHelper.save(article);
+            res.redirect("/articles");
+            return null;
+        }, velocityTemplateEngine);
 
         get("/articles/new", (req, res) ->{
             HashMap<String, Object> model = new HashMap<>();
@@ -43,24 +71,6 @@ public class ArticleController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
-        post("/articles", (req, res) ->{
-            int journalistId = Integer.parseInt(req.queryParams("journalist"));
-            Journalist journalist = DBHelper.find(journalistId, Journalist.class);
-
-            String title = req.queryParams("title");
-
-            String typeString = req.queryParams("categoryType");
-            CategoryType categoryType = CategoryType.valueOf(typeString);
-
-            String imagePath = req.queryParams("imagePath");
-            String articleSummary = req.queryParams("articleSummary");
-            String fullArticle = req.queryParams("fullArticle");
-
-            Article newArticle = new Article(journalist, title, categoryType, imagePath, articleSummary, fullArticle);
-            DBHelper.save(newArticle);
-            res.redirect("/articles");
-            return null;
-        }, velocityTemplateEngine);
 
 
 
@@ -132,10 +142,6 @@ public class ArticleController {
             res.redirect("/articles");
             return null;
         }, velocityTemplateEngine);
-
-
-
-
 
     }
 }
