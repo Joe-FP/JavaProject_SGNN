@@ -1,0 +1,33 @@
+<h1>All Articles</h1>
+
+<div>
+    <a href="/articles/new" class="button center">New Articles</a>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Journalist</th>
+            <th>Category</th>
+            <th>articleSummary</th>
+            <th>publishDate</th>
+            <th>rating</th>
+        </tr>
+        #foreach ($article in $articles)
+        <tr>
+            <td>$article.getTitle()</td>
+            <td>$article.getJournalist().getName()</td>
+            <td>$article.getCategoryType.getValue()</td>
+            <td>$article.getArticleSummary()</td>
+            <td>$article.getPublishDate()</td>
+            <td>%article.getRating()</td>
+            <td>
+                <form action="/articles/$article.getId()" method="get">
+                    <input type="submit" value="View"/>
+                </form>
+            </td>
+        </tr>
+        #end
+    </table>
+</div>

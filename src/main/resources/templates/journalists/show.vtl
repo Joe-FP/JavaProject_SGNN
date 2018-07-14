@@ -1,0 +1,33 @@
+<h1>Journalist Profile</h1>
+
+<div>
+    <section>
+        <p>Name: $journalist.getName()</p>
+        <p>Rating: $journalist.getRating()</p>
+        <p>Journalism Type: $journalist.getJournalismType().getJournalismType()</p>
+    </section>
+
+    <div class ="buttons">
+        <a href="/journalists/$journalist.getId()/edit">Edit</a>
+
+        <form action="/journalists/$journalist.getId()/delete" method="post">
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+
+    <section>
+        <div class ="article_section">
+            <table>
+                <tr>
+                    <th>Article Title</th>
+                </tr>
+                #foreach ($article in $articles)
+                <tr>
+                    <td>$article.getTitle()</td>
+                </tr>
+                #end
+            </table>
+        </div>
+
+    </section>
+</div>

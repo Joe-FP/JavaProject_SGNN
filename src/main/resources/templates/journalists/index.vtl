@@ -1,0 +1,25 @@
+<h1>All Journalists</h1>
+
+<div>
+    <a href="/journalists/new" class="button center">New Journalist</a>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Rating</th>
+        </tr>
+        #foreach ($journalist in $journalists)
+        <tr>
+            <td>$journalist.getName()</td>
+            <td>$journalist.getRating()</td>
+            <td>
+                <form action="/journalists/$journalist.getId()" method="get">
+                    <input type="submit" value="View"/>
+                </form>
+            </td>
+        </tr>
+        #end
+    </table>
+</div>
