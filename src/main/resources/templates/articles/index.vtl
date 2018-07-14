@@ -18,8 +18,10 @@
         <tr>
             <td>$article.getTitle()</td>
             <td>$article.getJournalist().getName()</td>
-            <td>$article.getCategory().getValue()</td>
-            <td>$article.get</td>
+            <td>$article.getCategoryType.getValue()</td>
+            <td>$article.getArticleSummary()</td>
+            <td>$article.getPublishDate()</td>
+            <td>%article.getRating()</td>
             <td>
                 <form action="/articles/$article.getId()" method="get">
                     <input type="submit" value="View"/>
@@ -29,15 +31,3 @@
         #end
     </table>
 </div>
-
-private int id;
-private Journalist journalist;
-private String title;
-private CategoryType categoryType;
-private String imagePath;
-private String articleSummary;
-private String fullArticle;
-private int articleHits;
-private Date publishDate;
-private int rating;
-private boolean accepted;
