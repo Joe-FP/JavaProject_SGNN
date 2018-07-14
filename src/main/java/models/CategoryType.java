@@ -1,5 +1,10 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.List;
+
 public enum CategoryType {
 
     WEATHER("Weather"),
@@ -13,13 +18,27 @@ public enum CategoryType {
     HEALTH("Health"),
     EDUCATION("Education");
 
-    private String value;
 
-    CategoryType(String value) {
-        this.value = value;
+    private String type;
+    private List<CategoryType> enumValues;
+
+    CategoryType(String type) {
+        this.type = type;
+        this.enumValues = new ArrayList<>();
     }
 
-    public String getValue() {
-        return value;
+    public String getType() {
+        return type;
+    }
+
+    public List<CategoryType> getEnumTypes() {
+        return enumValues;
+    }
+
+    public void addEnumTypes(){
+        for (CategoryType categoryType : this.enumValues){
+            enumValue.add(categoryType.getType());
+        }
+
     }
 }
