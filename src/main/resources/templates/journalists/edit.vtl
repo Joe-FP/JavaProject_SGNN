@@ -1,0 +1,13 @@
+<h1>Edit Article</h1>
+
+<form action="/journalists/$journalist.getId()" method="post">
+
+    <label for="name">Name:</label>
+    <input class="inputBox" type="text" name="name" id="name" value="$journalist.getName()"/>
+<br>
+    <label for="journalistType">Journalism Type:</label>
+    <input class="inputBox" type="text" name="journalismType" id="journalistType" value="$journalist.getJournalismType()"/>
+<br>
+    <input type="submit" value="Save" class="button">
+
+</form>
