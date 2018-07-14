@@ -15,8 +15,21 @@
         #end
     </select>
 
+
+    <!--<label for="categoryType">Category:</label>-->
+    <!--<select id="categoryType" name="categoryType">-->
+        <!--#foreach( $categoryType in $categoryTypes )-->
+        <!--<option value="$categoryType.getValue()"-->
+                <!--#if ($categoryType.getValue() == $article.getCategory().getValue())-->
+                <!--selected="selected"-->
+                <!--#end>-->
+            <!--$categoryType.getValue()</option>-->
+        <!--#end-->
+    <!--</select>-->
+
     <label for="categoryType">Category:</label>
-    <input class="inputBox" type="text" name="categoryType" required="true" id="categoryType" value="$categoryType.getValue()" >
+    <input class="inputBox" type="text" name="categoryType" required="true" id="categoryType" value="$article.getCategoryType()" >
+
 
     <label for="imagePath">Image:</label>
     <input class="inputBox" type="file" name="imagePath" id="imagePath" value="$article.getImagePath()">
