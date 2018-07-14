@@ -60,8 +60,5 @@ public class Seeds {
         DBHelper.save(article19);
         Article article20 = new Article(journalist5, "Headline", CategoryType.CRIME, "/images1", "summary", "full article");
         DBHelper.save(article20);
-
-
-
     }
 }
