@@ -35,10 +35,10 @@ public enum CategoryType {
         return enumValues;
     }
 
-    public void addEnumTypes(){
-        for (CategoryType categoryType : this.enumValues){
-            enumValue.add(categoryType.getType());
-        }
-
-    }
+//    public void addEnumTypes(){
+//        for (CategoryType categoryType : this.enumValues){
+//            enumValue.add(categoryType.getType());
+//        }
+//
+//    }
 }
