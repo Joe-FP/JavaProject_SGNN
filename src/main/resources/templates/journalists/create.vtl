@@ -1,18 +1,42 @@
 <h1>Add a new Journalist</h1>
 
+<div class ="article_section">
+    <form action="/journalists"method="post">
+        <table>
 
-<form action="/journalists"method="post">
-    <label for="name">Name:</label>
-    <input type="text" class="inputBox" name="name" id="name">
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
 
-    <label for="journalismType">Journalism Type:</label>
-    <select id="journalismType" name ="journalismType">
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" class="inputBox" name="name" required="true" id="name"></td>
+                <td></td>
+            </tr>
 
-        #foreach ( $journalismType in $journalismTypes )
-        <option value="hello">$journalismType.getJournalismType()</option>
-        #end
-    </select>
+            <tr>
+                <td>Type:</td>
+                <td><input type="text" class="inputBox" name="type" required="true" id="type"></td>
+                <td></td>
+                <td></td>
+            </tr>
 
-    <input type="submit" value="Save" class="button">
-</form>
+            <tr>
+                <td>Rating:</td>
+                <td><input type="text" class="inputBox" name="rating" required="true" id="rating"></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Save" class="button"></td>
+                <td></td>
+            </tr>
+
+        </table>
+    </form>
+</div>
 

@@ -60,14 +60,13 @@ public class JournalistController {
             res.redirect("/journalists");
             return null;
         }, velocityTemplateEngine);
-
-
-//        //Add a new Journalist
-//        get("/journalists/new", (req, res) ->{
-//            HashMap<String, Object> model = new HashMap<>();
-//            model.put("template", "templates/journalists/create.vtl");
-//            return new ModelAndView(model, "templates/layout.vtl");
-//        }, velocityTemplateEngine);
+        
+        //Add a new Journalist
+        get("/journalists/new", (req, res) ->{
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("template", "templates/journalists/create.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
 //
 //        post("/journalists", (req, res) ->{
 //            String name = req.queryParams("name");

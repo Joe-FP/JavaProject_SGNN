@@ -2,6 +2,8 @@ package db;
 
 import models.*;
 
+import java.util.Date;
+
 public class Seeds {
 
     public static void seedData(){
