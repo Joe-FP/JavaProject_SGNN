@@ -26,20 +26,6 @@ public class DBHelper {
         }
     }
 
-    public static void update(Object object) {
-        session = HibernateUtil.getSessionFactory().openSession();
-        try {
-            transaction = session.beginTransaction();
-            session.update(object);
-            transaction.commit();
-        } catch (HibernateException e) {
-            transaction.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-    }
-
     public static <T> List<T> getList(Criteria criteria) {
         List<T> results = null;
         try {
@@ -82,7 +68,6 @@ public class DBHelper {
                 session.delete(result);
             }
             transaction.commit();
-
         } catch (HibernateException ex) {
             transaction.rollback();
             ex.printStackTrace();

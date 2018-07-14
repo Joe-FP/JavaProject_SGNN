@@ -33,22 +33,6 @@ public class JournalistController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
-        //Add a new Journalist
-        get("/journalists/new", (req, res) ->{
-            HashMap<String, Object> model = new HashMap<>();
-            model.put("template", "templates/journalists/create.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
-        }, velocityTemplateEngine);
-
-        post("/journalists", (req, res) ->{
-            String name = req.queryParams("name");
-            String type = req.queryParams("journalismType");
-            JournalismType journalismType = JournalismType.valueOf(type);
-            Journalist newJournalist = new Journalist(name, journalismType);
-            DBHelper.save(newJournalist);
-            res.redirect("/journalists");
-            return null;
-        }, velocityTemplateEngine);
 
         //Show an individual Journalist
 
@@ -70,6 +54,24 @@ public class JournalistController {
             model.put("template", "templates/journalists/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
+
+
+//        //Add a new Journalist
+//        get("/journalists/new", (req, res) ->{
+//            HashMap<String, Object> model = new HashMap<>();
+//            model.put("template", "templates/journalists/create.vtl");
+//            return new ModelAndView(model, "templates/layout.vtl");
+//        }, velocityTemplateEngine);
+//
+//        post("/journalists", (req, res) ->{
+//            String name = req.queryParams("name");
+//            String type = req.queryParams("journalismType");
+//            JournalismType journalismType = JournalismType.valueOf(type);
+//            Journalist newJournalist = new Journalist(name, journalismType);
+//            DBHelper.save(newJournalist);
+//            res.redirect("/journalists");
+//            return null;
+//        }, velocityTemplateEngine);
 //
 //        //Edit current Journalist
 //
@@ -105,14 +107,14 @@ public class JournalistController {
 //        }, velocityTemplateEngine);
 //
         //Delete the current Journalist
-
+//
         post("/journalists/:id/delete", (req, res) ->{
-            String strId = req.params(":id");
-            Integer intId = Integer.parseInt(strId);
-            Journalist journalistToDelete = DBHelper.find(intId, Journalist.class);
+            int id = Integer.parseInt(req.params(":id"));
+            Journalist journalistToDelete = DBHelper.find(id, Journalist.class);
             DBHelper.delete(journalistToDelete);
             res.redirect("/journalists");
             return null;
         }, velocityTemplateEngine);
+
     }
 }
