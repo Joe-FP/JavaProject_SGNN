@@ -3,7 +3,12 @@ package models;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 @Entity
 @Table(name ="articles")
@@ -17,7 +22,12 @@ public class Article {
     private String articleSummary;
     private String fullArticle;
     private int articleHits;
-    private String publishDate;
+
+    private Date publishDate;
+
+
+
+
     private int rating;
     private boolean accepted;
 
@@ -25,10 +35,12 @@ public class Article {
 
     }
 
-    public Article(Journalist journalist, String title, CategoryType categoryType, String imagePath, String articleSummary, String fullArticle) {
+    public Article(Journalist journalist, String title, String publishDate, CategoryType categoryType, String imagePath, String articleSummary, String fullArticle) {
         this.journalist = journalist;
         this.title = title;
-        //this.publishDate = publishDate;
+
+        setPublishDate(publishDate);
+
         this.categoryType = categoryType;
         this.imagePath = imagePath;
         this.articleSummary = articleSummary;
@@ -114,14 +126,22 @@ public class Article {
         this.articleHits = articleHits;
     }
 
-//    @Column(name="publishDate")
-//    public String getPublishDate() {
-//        return publishDate;
-//    }
+    @Column(name="publishDate")
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
 //
-//    public void setPublishDate(String publishDate) {
-//        this.publishDate = publishDate;
-//    }
+//        try {
+//            DateFormat format = new SimpleDateFormat("dd/mm/yyyy", Locale.ENGLISH);
+//            Date date = format.parse(publishDate);
+//            this.publishDate = date;
+//        } catch (java.text.ParseException e) {
+//            e.printStackTrace();
+//        }
+    }
 
     @Column(name="rating")
     public int getRating() {

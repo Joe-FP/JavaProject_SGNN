@@ -3,6 +3,8 @@ import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
@@ -18,7 +20,8 @@ public class NewsTest {
         news = new News("SGNN");
         journalist = new Journalist("Ron Burgundy", JournalismType.BROADCAST);
         DBHelper.save(journalist);
-        article = new Article(journalist, "title", CategoryType.POLITICS, "location.jpg", "summary", "full article");
+        String date = new SimpleDateFormat("dd/mm/yyyy").format(Calendar.getInstance().getTime());
+        article = new Article(journalist, "title", "12/06/2018", CategoryType.Politics, "location.jpg", "summary", "full article");
         DBHelper.save(article);
     }
 

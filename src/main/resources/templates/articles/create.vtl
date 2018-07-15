@@ -22,13 +22,6 @@
                 <td></td>
             </tr>
 
-            <!--<tr>-->
-                <!--<td>Date:</td>-->
-                <!--&lt;!&ndash;<td><input type="date" class="inputBox" name="publishDate" required="true" id="publishDate"></td>&ndash;&gt;-->
-                <!--<td><input type="text" class="inputBox" name="publishDate" required="true" id="publishDate"></td>-->
-                <!--<td></td>-->
-            <!--</tr>-->
-
             <tr>
                 <td>Title:</td>
                 <td><input type="text" class="inputBox" name="title" required="true" id="title"></td>
@@ -36,8 +29,21 @@
             </tr>
 
             <tr>
+                <td>Date:</td>
+                <td><input type="date" class="inputBox" name="publishDate" required="true" id="publishDate"></td>
+                <!--<td><input type="text" class="inputBox" name="publishDate" required="true" id="publishDate"></td>-->
+                <td></td>
+            </tr>
+
+            <tr>
                 <td>Category:</td>
-                <td><input type="text" class="inputBox" name="category" required="true" id="category"></td>
+                <td>
+                    <select id="category" name ="category">
+                        #foreach ( $category in $categories )
+                        <option value="$category">$category</option>
+                        #end
+                    </select>
+                </td>
                 <td></td>
                 <td></td>
             </tr>

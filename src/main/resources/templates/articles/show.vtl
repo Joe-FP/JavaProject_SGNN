@@ -1,17 +1,57 @@
-<div class="article-header">
-    <h1>$article.getTitle()</h1>
-</div>
+<!--<div class="article-header">-->
+    <!--<h1>$article.getTitle()</h1>-->
+<!--</div>-->
 
 <div class="main">
-    <p>$article.getFullArticle()</p>
+
+    <table>
+
+    <th></th>
+    <th></th>
+    <th></th>
+
+    <tr>
+        <td></td>
+        <td><h1>$article.getTitle()</h1></td>
+        <td>$article.getPublishDate()</td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>$article.getImagePath()</td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>$article.getFullArticle()</td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td></td>
+        <td>$article.getJournalist().getName()</td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>$article.getHits()</td>
+        <td></td>
+    </tr>
+
+    </table>
 
 </div>
+
 <div class="right">
+
     <div class ="buttons">
         <a href="/articles/$article.getId()/edit">Edit</a>
 
         <form action="/articles/$article.getId()/delete" method="post">
             <input type="submit" value="Delete">
-        </form></div>
+        </form>
+    </div>
 
 </div>

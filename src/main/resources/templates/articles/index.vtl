@@ -9,18 +9,20 @@
         <tr>
             <th>Title</th>
             <th>Journalist</th>
+            <th>Publish Date</th>
             <th>Category</th>
             <th>Summary</th>
-            <!--<th>Publish Date</th>-->
+            <th>Image</th>
             <th>Rating</th>
         </tr>
         #foreach ($article in $articles)
         <tr>
             <td>$article.getTitle()</td>
             <td>$article.getJournalist().getName()</td>
-            <td>Category</td>
+            <td>$article.getPublishDate()</td>
+            <td>$article.getCategoryType()</td>
             <td>$article.getArticleSummary()</td>
-            <!--<td>$article.getPublishDate()</td>-->
+            <td>$article.getImagePath()</td>
             <td>$article.getRating()</td>
             <td>
                 <form action="/articles/$article.getId()" method="get">
