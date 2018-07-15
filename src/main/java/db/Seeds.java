@@ -22,7 +22,7 @@ public class Seeds {
         Journalist journalist5 = new Journalist("Matt Anders", JournalismType.PUBLIC_RELATIONS);
         DBHelper.save(journalist5);
 
-        Article article1 = new Article(journalist5, "Lorem Ipsum1", CategoryType.WORLD, "/images1", "summary", "full article");
+        Article article1 = new Article(journalist5, "Lorem Ipsum1", CategoryType.WORLD, "/images/article-images/achievement-agreement-arms-1068523.jpg", "summary", "full article");
         DBHelper.save(article1);
         Article article2 = new Article(journalist2, "Lorem Ipsum2", CategoryType.POLITICS, "/images2", "summary", "full article");
         DBHelper.save(article2);
