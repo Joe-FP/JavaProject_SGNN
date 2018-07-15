@@ -18,7 +18,14 @@
     </div>
     <p>$article.getFullArticle()</p>
     <p>$article.getRating()</p>
-    <p>$article.getJournalist().getName()</p>
+    <p>Published by
+    <a href="/journalists/$journalist.getId()">$article.getJournalist().getName()</a>
+    </p>
+
+    <div class="rating">
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        <input type="submit" value="Rate">
+    </div>
 
 </div>
 <div class="right">
