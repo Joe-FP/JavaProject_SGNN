@@ -3,9 +3,22 @@
 </div>
 
 <div class="article-body">
-    <p>$article.getPublishDate()</p>
-    <p>$article.getCategoryType().getType()</p>
+
+    <div class ="heading">
+        <div class="heading-date">
+        <p class = "article_date">$article.getPublishDate()</p>
+        </div>
+        <div class="heading-category">
+        <p class="article_type">$article.getCategoryType().getType()</p>
+        </div>
+    </div>
+
+    <div class="article-image">
     <img src="$article.getImagePath()" alt="article image">
+    </div>
+    <p>$article.getFullArticle()</p>
+    <p>$article.getRating()</p>
+    <p>$article.getJournalist().getName()</p>
 
 </div>
 <div class="right">
