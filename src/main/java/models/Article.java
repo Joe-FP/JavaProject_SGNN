@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,6 +24,7 @@ public class Article {
     private String fullArticle;
     private int articleHits;
     private String publishD;
+    //private Date publishD;
     private int rating;
     private boolean accepted;
 
@@ -119,12 +121,22 @@ public class Article {
         this.articleHits = articleHits;
     }
 
+//    @Column(name="publishD")
+//    public String getPublishD() {
+//        return publishD;
+//    }
+//
+//    public void setPublishD(String publishD) { this.publishD = publishD; }
+
+
+
     @Column(name="publishD")
     public String getPublishD() {
         return publishD;
     }
 
     public void setPublishD(String publishD) { this.publishD = publishD; }
+
 
     @Column(name="rating")
     public int getRating() {

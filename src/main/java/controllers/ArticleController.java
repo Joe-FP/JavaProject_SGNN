@@ -8,6 +8,8 @@ import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -76,13 +78,28 @@ public class ArticleController {
 
         post("/articles", (req, res) ->{
             String title = req.queryParams("title");
-            String publishDate = req.queryParams("publishDate");
+            String publishDate = req.queryParams("publishD");
+
+            SimpleDateFormat parser = new SimpleDateFormat("yyyy-mm-dd");
+            Date date;
+            try {
+                date = parser.parse(publishDate);
+            } catch (ParseException e) {
+                date = null;
+                e.printStackTrace();
+            }
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            String formattedDate = formatter.format(date);
+
+
+            String categoryType = req.queryParams("category");
+            CategoryType category = CategoryType.valueOf(categoryType);
             String imagePath = req.queryParams("imagePath");
             String summary = req.queryParams("summary");
             String fullArticle = req.queryParams("fullArticle");
             int journalist_id = Integer.parseInt(req.queryParams("journalist_id"));
             Journalist journalist = DBHelper.find(journalist_id, Journalist.class);
-            Article article = new Article(journalist, title, publishDate, CategoryType.Tech, imagePath, summary, fullArticle);
+            Article article = new Article(journalist, title, formattedDate, category, imagePath, summary, fullArticle);
             DBHelper.save(article);
             res.redirect("/articles");
             return null;
@@ -105,9 +122,20 @@ public class ArticleController {
             //Get journalist from article
             int JournalistID = article.getJournalist().getId();
             Journalist journalist = DBHelper.find(JournalistID, Journalist.class);
-
             String title = req.queryParams("title");
             String publishD = req.queryParams("publishD");
+
+            SimpleDateFormat parser = new SimpleDateFormat("yyyy-mm-dd");
+            Date date;
+            try {
+                date = parser.parse(publishD);
+            } catch (ParseException e) {
+                date = null;
+                e.printStackTrace();
+            }
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            String formattedDate = formatter.format(date);
+
             String categoryType = req.queryParams("category");
             CategoryType category = CategoryType.valueOf(categoryType);
             String articleSummary = req.queryParams("articleSummary");
@@ -116,7 +144,7 @@ public class ArticleController {
 
             article.setJournalist(journalist);
             article.setTitle(title);
-            article.setPublishD(publishD);
+            article.setPublishD(formattedDate);
             article.setCategoryType(category);
             article.setArticleSummary(articleSummary);
             article.setFullArticle(fullArticle);

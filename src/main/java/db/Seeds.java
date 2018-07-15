@@ -2,6 +2,7 @@ package db;
 
 import models.*;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,16 +26,40 @@ public class Seeds {
         DBHelper.save(journalist5);
 
 
-        Article article1 = new Article(journalist1, "Lorem Ipsum1", "test", CategoryType.Weather, "/images1", "summary", "full article");
+        SimpleDateFormat parser = new SimpleDateFormat("yyyy-mm-dd");
+        Date date;
+        try {
+            date = parser.parse("2018-06-22");
+        } catch (ParseException e) {
+            date = null;
+            e.printStackTrace();
+        }
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+        String formattedDate = formatter.format(date);
+
+
+        Article article1 = new Article(journalist1, "Lorem Ipsum1", formattedDate, CategoryType.Weather, "/images1", "summary", "full article");
         DBHelper.save(article1);
-        Article article2 = new Article(journalist1, "Lorem Ipsum2", "date", CategoryType.Business, "/images2", "summary", "full article");
+        Article article2 = new Article(journalist1, "Lorem Ipsum2", formattedDate, CategoryType.Business, "/images2", "summary", "full article");
         DBHelper.save(article2);
-        Article article3 = new Article(journalist1, "Lorem Ipsum3", "date", CategoryType.Industry, "/images3", "summary", "full article");
+        Article article3 = new Article(journalist1, "Lorem Ipsum3", formattedDate, CategoryType.Industry, "/images3", "summary", "full article");
         DBHelper.save(article3);
-        Article article4 = new Article(journalist2, "Lorem Ipsum4", "test", CategoryType.Crime, "/images1", "summary", "full article");
+        Article article4 = new Article(journalist2, "Lorem Ipsum4", formattedDate, CategoryType.Crime, "/images1", "summary", "full article");
         DBHelper.save(article4);
-        Article article5 = new Article(journalist3, "Lorem Ipsum5", "test", CategoryType.Tech, "/images1", "summary", "full article");
+        Article article5 = new Article(journalist3, "Lorem Ipsum5", formattedDate, CategoryType.Tech, "/images1", "summary", "full article");
         DBHelper.save(article5);
+
+
+//        Article article1 = new Article(journalist1, "Lorem Ipsum1", "test", CategoryType.Weather, "/images1", "summary", "full article");
+//        DBHelper.save(article1);
+//        Article article2 = new Article(journalist1, "Lorem Ipsum2", "date", CategoryType.Business, "/images2", "summary", "full article");
+//        DBHelper.save(article2);
+//        Article article3 = new Article(journalist1, "Lorem Ipsum3", "date", CategoryType.Industry, "/images3", "summary", "full article");
+//        DBHelper.save(article3);
+//        Article article4 = new Article(journalist2, "Lorem Ipsum4", "test", CategoryType.Crime, "/images1", "summary", "full article");
+//        DBHelper.save(article4);
+//        Article article5 = new Article(journalist3, "Lorem Ipsum5", "test", CategoryType.Tech, "/images1", "summary", "full article");
+//        DBHelper.save(article5);
 //        Article article6 = new Article(journalist5, "Lorem Ipsum6", CategoryType.ENTERTAINMENT, "/images1", "summary", "full article");
 //        DBHelper.save(article6);
 //        Article article7 = new Article(journalist1, "Lorem Ipsum7", CategoryType.TECH, "/images1", "summary", "full article");
