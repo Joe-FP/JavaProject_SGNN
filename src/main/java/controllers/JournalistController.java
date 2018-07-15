@@ -2,11 +2,13 @@ package controllers;
 
 import db.DBHelper;
 import models.Article;
+import models.CategoryType;
 import models.JournalismType;
 import models.Journalist;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,24 +35,55 @@ public class JournalistController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
+        //Add a new Journalist
+        get("/journalists/new", (req, res) ->{
+            HashMap<String, Object> model = new HashMap<>();
+            List<Article> articles = DBHelper.getAll(Article.class);
+            ArrayList<String> categories = new ArrayList<>();
+            for (JournalismType cat : JournalismType.values()) {
+                categories.add(cat.name());
+            }
+            model.put("categories", categories);
+            model.put("articles", articles);
+            model.put("template", "templates/journalists/create.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
+
+        post("/journalists", (req, res) ->{
+            String name = req.queryParams("name");
+            String category = req.queryParams("category");
+            JournalismType journalismType = JournalismType.valueOf(category);
+            Journalist newJournalist = new Journalist(name, journalismType);
+            DBHelper.save(newJournalist);
+            res.redirect("/journalists");
+            return null;
+        }, velocityTemplateEngine);
+
+
+        get("articles/:id", (req, res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Article article = DBHelper.find(intId, Article.class);
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("article", article);
+            model.put("template", "templates/articles/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
+
 
         //Show an individual Journalist
         get("journalists/:id", (req, res) ->{
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Journalist journalist = DBHelper.find(intId, Journalist.class);
-
-            //Below can possibly display all articles that the journalist has written.
-            // Perhaps write it in a DBJournalist file?
             List<Article> articles= DBHelper.getAllArticlesWrittenByJournalist(journalist);
-
             HashMap<String, Object> model = new HashMap<>();
             model.put("journalist", journalist);
-            //if the Article return works above need to include below to bring them back.
             model.put("articles", articles);
             model.put("template", "templates/journalists/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
+
 
         //Delete the current Journalist
         post("/journalists/:id/delete", (req, res) ->{
@@ -60,58 +93,57 @@ public class JournalistController {
             res.redirect("/journalists");
             return null;
         }, velocityTemplateEngine);
-        
-        //Add a new Journalist
-        get("/journalists/new", (req, res) ->{
+
+
+        get("articles/:id/edit", (req, res) ->{
             HashMap<String, Object> model = new HashMap<>();
-            model.put("template", "templates/journalists/create.vtl");
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Article article = DBHelper.find(intId, Article.class);
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            ArrayList<String> categories = new ArrayList<>();
+            for (CategoryType cat : CategoryType.values()) {
+                categories.add(cat.name());
+            }
+            model.put("article", article);
+            model.put("journalists", journalists);
+            model.put("categories", categories);
+            model.put("template", "templates/articles/edit.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
-//
-//        post("/journalists", (req, res) ->{
-//            String name = req.queryParams("name");
-//            String type = req.queryParams("journalismType");
-//            JournalismType journalismType = JournalismType.valueOf(type);
-//            Journalist newJournalist = new Journalist(name, journalismType);
-//            DBHelper.save(newJournalist);
-//            res.redirect("/journalists");
-//            return null;
-//        }, velocityTemplateEngine);
-//
-//        //Edit current Journalist
-//
-//        get("journalists/:id/edit", (req, res) ->{
-//            String strId = req.params(":id");
-//            Integer intId = Integer.parseInt(strId);
-//            Journalist journalist = DBHelper.find(intId, Journalist.class);
-//
-//
-//
-//            HashMap<String, Object> model = new HashMap<>();
-//            model.put("journalists", journalists);
-//
-//            model.put("template", "templates/journalist/edit.vtl");
-//
-//            return new ModelAndView(model, "templates/layout.vtl");
-//        }, velocityTemplateEngine);
-//
-//        post("/journalists/:id", (req, res) ->{
-//            String strId = req.params(":id");
-//            Integer intId = Integer.parseInt(strId);
-//            Journalist journalist = DBHelper.find(intId, Journalist.class);
-//
-//            String name = req.queryParams("name");
-//            String type = req.queryParams("journalismType");
-//
-//            journalist.setName(name);
-//            journalist.setJournalismType(type);
-//
-//            DBHelper.save(journalist);
-//            res.redirect("journalists/:id");
-//            return null;
-//        }, velocityTemplateEngine);
-//
 
+
+        //Edit current Journalist
+        get("journalists/:id/edit", (req, res) ->{
+            HashMap<String, Object> model = new HashMap<>();
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Journalist journalist = DBHelper.find(intId, Journalist.class);
+            ArrayList<String> categories = new ArrayList<>();
+            for (JournalismType cat : JournalismType.values()) {
+                categories.add(cat.name());
+            }
+            model.put("journalist", journalist);
+            model.put("categories", categories);
+            model.put("template", "templates/journalists/edit.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
+
+
+        post("/journalists/:id", (req, res) ->{
+            Integer intId = Integer.parseInt(req.params(":id"));
+            Journalist journalist = DBHelper.find(intId, Journalist.class);
+
+            String name = req.queryParams("name");
+            String journalismType = req.queryParams("category");
+            JournalismType category = JournalismType.valueOf(journalismType);
+
+            journalist.setName(name);
+            journalist.setJournalismType(category);
+            DBHelper.save(journalist);
+            res.redirect("/journalists");
+            return null;
+        }, velocityTemplateEngine);
 
     }
 }

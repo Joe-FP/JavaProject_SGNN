@@ -18,15 +18,13 @@
 
             <tr>
                 <td>Type:</td>
-                <td><input type="text" class="inputBox" name="type" required="true" id="type"></td>
-                <td></td>
-                <td></td>
-            </tr>
-
-            <tr>
-                <td>Rating:</td>
-                <td><input type="text" class="inputBox" name="rating" required="true" id="rating"></td>
-                <td></td>
+                <td>
+                    <select id="category" name ="category">
+                        #foreach ( $category in $categories )
+                        <option value="$category">$category</option>
+                        #end
+                    </select>
+                </td>
                 <td></td>
             </tr>
 

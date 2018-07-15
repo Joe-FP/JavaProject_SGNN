@@ -1,0 +1,35 @@
+<h1>Edit Journalist</h1>
+
+<form action="/journalists/$journalist.getId()" method="post">
+
+    <table>
+
+        <tr>
+            <td>Name:</td>
+            <td><input class="inputBox" type="text" name="name" id="name" value="$journalist.getName()" required="true"></td>
+        </tr>
+
+        <tr>
+            <td>Type:</td>
+            <td>
+                <select id="category" name ="category">
+                    #foreach ( $category in $categories )
+                    <option value="$category"
+                            #if ($category == $journalist.getJournalismType())
+                            selected="selected"
+                            #end>
+                        $category
+                    </option>
+                    #end
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Save" class="button"></td>
+        </tr>
+
+    </table>
+
+</form>

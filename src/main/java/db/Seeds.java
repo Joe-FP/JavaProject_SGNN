@@ -13,30 +13,28 @@ public class Seeds {
         DBHelper.deleteAll(Journalist.class);
         DBHelper.deleteAll(News.class);
 
-        Journalist journalist1 = new Journalist("Vivian Rook", JournalismType.BROADCAST);
+        Journalist journalist1 = new Journalist("Vivian Rook", JournalismType.Broadcast);
         DBHelper.save(journalist1);
-        Journalist journalist2 = new Journalist("Tony Hills", JournalismType.SPORT);
+        Journalist journalist2 = new Journalist("Tony Hills", JournalismType.Sport);
         DBHelper.save(journalist2);
-        Journalist journalist3 = new Journalist("Ford Prefect", JournalismType.COMMUNICATIONS);
+        Journalist journalist3 = new Journalist("Ford Prefect", JournalismType.Communication);
         DBHelper.save(journalist3);
-        Journalist journalist4 = new Journalist("Bridget Jones", JournalismType.FOREIGN);
+        Journalist journalist4 = new Journalist("Bridget Jones", JournalismType.Foreign);
         DBHelper.save(journalist4);
-        Journalist journalist5 = new Journalist("Matt Anders", JournalismType.PUBLIC_RELATIONS);
+        Journalist journalist5 = new Journalist("Matt Anders", JournalismType.PR);
         DBHelper.save(journalist5);
 
 
-        //String date = new SimpleDateFormat("dd/mm/yyyy").format(Calendar.getInstance().getTime());
-
-        Article article1 = new Article(journalist5, "Lorem Ipsum1", "12/06/2018", CategoryType.World, "/images1", "summary", "full article");
+        Article article1 = new Article(journalist1, "Lorem Ipsum1", "test", CategoryType.World, "/images1", "summary", "full article");
         DBHelper.save(article1);
-//        Article article2 = new Article(journalist2, "Lorem Ipsum2", "dd/mm/yyyy", CategoryType.Politics, "/images2", "summary", "full article");
-//        DBHelper.save(article2);
-//        Article article3 = new Article(journalist3, "Lorem Ipsum3", "dd/mm/yyyy", CategoryType.Industry, "/images3", "summary", "full article");
-//        DBHelper.save(article3);
-//        Article article4 = new Article(journalist1, "Lorem Ipsum4", CategoryType.BUSINESS, "/images1", "summary", "full article");
-//        DBHelper.save(article4);
-//        Article article5 = new Article(journalist4, "Lorem Ipsum5", CategoryType.EDUCATION, "/images1", "summary", "full article");
-//        DBHelper.save(article5);
+        Article article2 = new Article(journalist1, "Lorem Ipsum2", "date", CategoryType.Politics, "/images2", "summary", "full article");
+        DBHelper.save(article2);
+        Article article3 = new Article(journalist1, "Lorem Ipsum3", "date", CategoryType.Industry, "/images3", "summary", "full article");
+        DBHelper.save(article3);
+        Article article4 = new Article(journalist2, "Lorem Ipsum4", "test", CategoryType.Business, "/images1", "summary", "full article");
+        DBHelper.save(article4);
+        Article article5 = new Article(journalist3, "Lorem Ipsum5", "test", CategoryType.Education, "/images1", "summary", "full article");
+        DBHelper.save(article5);
 //        Article article6 = new Article(journalist5, "Lorem Ipsum6", CategoryType.ENTERTAINMENT, "/images1", "summary", "full article");
 //        DBHelper.save(article6);
 //        Article article7 = new Article(journalist1, "Lorem Ipsum7", CategoryType.TECH, "/images1", "summary", "full article");
@@ -67,5 +65,7 @@ public class Seeds {
 //        DBHelper.save(article19);
 //        Article article20 = new Article(journalist5, "Lorem Ipsum20", CategoryType.CRIME, "/images1", "summary", "full article");
 //        DBHelper.save(article20);
+
+
     }
 }

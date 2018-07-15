@@ -19,10 +19,9 @@ public class ArticleTest {
 
     @Before
     public void setUp() throws Exception {
-        journalist = new Journalist("Ron Burgundy", JournalismType.BROADCAST);
+        journalist = new Journalist("Ron Burgundy", JournalismType.Broadcast);
         DBHelper.save(journalist);
-        String date = new SimpleDateFormat("dd/mm/yyyy").format(Calendar.getInstance().getTime());
-        article = new Article(journalist, "title", "12/06/2018", CategoryType.Politics, "location.jpg", "summary", "full article");
+        article = new Article(journalist, "title", "test", CategoryType.Politics, "location.jpg", "summary", "full article");
         DBHelper.save(article);
     }
 

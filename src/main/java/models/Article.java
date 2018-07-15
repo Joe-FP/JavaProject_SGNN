@@ -22,12 +22,7 @@ public class Article {
     private String articleSummary;
     private String fullArticle;
     private int articleHits;
-
-    private Date publishDate;
-
-
-
-
+    private String publishD;
     private int rating;
     private boolean accepted;
 
@@ -35,12 +30,10 @@ public class Article {
 
     }
 
-    public Article(Journalist journalist, String title, String publishDate, CategoryType categoryType, String imagePath, String articleSummary, String fullArticle) {
+    public Article(Journalist journalist, String title, String publishD, CategoryType categoryType, String imagePath, String articleSummary, String fullArticle) {
         this.journalist = journalist;
         this.title = title;
-
-        setPublishDate(publishDate);
-
+        this.publishD = publishD;
         this.categoryType = categoryType;
         this.imagePath = imagePath;
         this.articleSummary = articleSummary;
@@ -126,22 +119,12 @@ public class Article {
         this.articleHits = articleHits;
     }
 
-    @Column(name="publishDate")
-    public Date getPublishDate() {
-        return publishDate;
+    @Column(name="publishD")
+    public String getPublishD() {
+        return publishD;
     }
 
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
-//
-//        try {
-//            DateFormat format = new SimpleDateFormat("dd/mm/yyyy", Locale.ENGLISH);
-//            Date date = format.parse(publishDate);
-//            this.publishDate = date;
-//        } catch (java.text.ParseException e) {
-//            e.printStackTrace();
-//        }
-    }
+    public void setPublishD(String publishD) { this.publishD = publishD; }
 
     @Column(name="rating")
     public int getRating() {

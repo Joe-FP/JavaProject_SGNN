@@ -108,7 +108,7 @@ public class ArticleController {
             Journalist journalist = DBHelper.find(JournalistID, Journalist.class);
 
             String title = req.queryParams("title");
-            //Date
+            String publishD = req.queryParams("publishD");
             String categoryType = req.queryParams("category");
             CategoryType category = CategoryType.valueOf(categoryType);
             String articleSummary = req.queryParams("articleSummary");
@@ -117,7 +117,7 @@ public class ArticleController {
 
             article.setJournalist(journalist);
             article.setTitle(title);
-            //article.setDate
+            article.setPublishD(publishD);
             article.setCategoryType(category);
             article.setArticleSummary(articleSummary);
             article.setFullArticle(fullArticle);
