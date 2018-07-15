@@ -25,15 +25,15 @@ public class Seeds {
         DBHelper.save(journalist5);
 
 
-        Article article1 = new Article(journalist1, "Lorem Ipsum1", "test", CategoryType.World, "/images1", "summary", "full article");
+        Article article1 = new Article(journalist1, "Lorem Ipsum1", "test", CategoryType.Weather, "/images1", "summary", "full article");
         DBHelper.save(article1);
-        Article article2 = new Article(journalist1, "Lorem Ipsum2", "date", CategoryType.Politics, "/images2", "summary", "full article");
+        Article article2 = new Article(journalist1, "Lorem Ipsum2", "date", CategoryType.Business, "/images2", "summary", "full article");
         DBHelper.save(article2);
         Article article3 = new Article(journalist1, "Lorem Ipsum3", "date", CategoryType.Industry, "/images3", "summary", "full article");
         DBHelper.save(article3);
-        Article article4 = new Article(journalist2, "Lorem Ipsum4", "test", CategoryType.Business, "/images1", "summary", "full article");
+        Article article4 = new Article(journalist2, "Lorem Ipsum4", "test", CategoryType.Crime, "/images1", "summary", "full article");
         DBHelper.save(article4);
-        Article article5 = new Article(journalist3, "Lorem Ipsum5", "test", CategoryType.Education, "/images1", "summary", "full article");
+        Article article5 = new Article(journalist3, "Lorem Ipsum5", "test", CategoryType.Tech, "/images1", "summary", "full article");
         DBHelper.save(article5);
 //        Article article6 = new Article(journalist5, "Lorem Ipsum6", CategoryType.ENTERTAINMENT, "/images1", "summary", "full article");
 //        DBHelper.save(article6);

@@ -20,7 +20,7 @@ public class NewsTest {
         news = new News("SGNN");
         journalist = new Journalist("Ron Burgundy", JournalismType.Broadcast);
         DBHelper.save(journalist);
-        article = new Article(journalist, "title", "test", CategoryType.Politics, "location.jpg", "summary", "full article");
+        article = new Article(journalist, "title", "test", CategoryType.Crime, "location.jpg", "summary", "full article");
         DBHelper.save(article);
     }
 

@@ -26,9 +26,17 @@ public class ArticleController {
 
         VelocityTemplateEngine velocityTemplateEngine = new VelocityTemplateEngine();
 
+
         get("/articles", (req, res) ->{
             HashMap<String, Object> model = new HashMap<>();
             List<Article> articles = DBHelper.getAll(Article.class);
+
+            ArrayList<String> categories = new ArrayList<>();
+            for (CategoryType cat : CategoryType.values()) {
+                categories.add(cat.name());
+            }
+
+            model.put("categories", categories);
             model.put("articles", articles);
             model.put("template", "templates/articles/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -68,22 +76,13 @@ public class ArticleController {
 
         post("/articles", (req, res) ->{
             String title = req.queryParams("title");
-
-            // req.queryParams("category") is currently returning a String.
-            // Uncomment this line when Angelina finds a way to pass the list
-            // of enum values into a vtl file (should return CategoryType).
-            //CategoryType category = req.queryParams("category");
-
             String publishDate = req.queryParams("publishDate");
-
-
             String imagePath = req.queryParams("imagePath");
             String summary = req.queryParams("summary");
             String fullArticle = req.queryParams("fullArticle");
             int journalist_id = Integer.parseInt(req.queryParams("journalist_id"));
             Journalist journalist = DBHelper.find(journalist_id, Journalist.class);
-
-            Article article = new Article(journalist, title, publishDate, CategoryType.Industry, imagePath, summary, fullArticle);
+            Article article = new Article(journalist, title, publishDate, CategoryType.Tech, imagePath, summary, fullArticle);
             DBHelper.save(article);
             res.redirect("/articles");
             return null;
@@ -129,7 +128,6 @@ public class ArticleController {
 
         }, velocityTemplateEngine);
 
-
         get("articles/:id", (req, res) ->{
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
@@ -140,6 +138,18 @@ public class ArticleController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
+        post("articles/:id/view", (req, res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Article article = DBHelper.find(intId, Article.class);
+            article.setArticleHits(article.getArticleHits()+1);
+            DBHelper.save(article);
+            Article articleNew = DBHelper.find(intId, Article.class);
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("article", articleNew);
+            model.put("template", "templates/articles/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
 
         post("/articles/:id/delete", (req, res) ->{
             int id = Integer.parseInt(req.params(":id"));

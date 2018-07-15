@@ -15,5 +15,4 @@ public enum CategoryType {
     Politics,
     Health,
     Education;
-
 }

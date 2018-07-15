@@ -59,18 +59,6 @@ public class JournalistController {
             return null;
         }, velocityTemplateEngine);
 
-
-        get("articles/:id", (req, res) ->{
-            String strId = req.params(":id");
-            Integer intId = Integer.parseInt(strId);
-            Article article = DBHelper.find(intId, Article.class);
-            HashMap<String, Object> model = new HashMap<>();
-            model.put("article", article);
-            model.put("template", "templates/articles/show.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
-        }, velocityTemplateEngine);
-
-
         //Show an individual Journalist
         get("journalists/:id", (req, res) ->{
             String strId = req.params(":id");

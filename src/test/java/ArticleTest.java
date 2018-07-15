@@ -21,13 +21,13 @@ public class ArticleTest {
     public void setUp() throws Exception {
         journalist = new Journalist("Ron Burgundy", JournalismType.Broadcast);
         DBHelper.save(journalist);
-        article = new Article(journalist, "title", "test", CategoryType.Politics, "location.jpg", "summary", "full article");
+        article = new Article(journalist, "title", "test", CategoryType.Weather, "location.jpg", "summary", "full article");
         DBHelper.save(article);
     }
 
-    @Test
-    public void canAddArticleHit() {
-        article.addArticleHit();
-        assertEquals(1, article.getArticleHits());
-    }
+//    @Test
+//    public void canAddArticleHit() {
+//        article.addArticleHit();
+//        assertEquals(1, article.getArticleHits());
+//    }
 }

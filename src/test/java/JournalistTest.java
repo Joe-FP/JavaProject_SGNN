@@ -20,7 +20,7 @@ public class JournalistTest {
   @Before
   public void setUp() throws Exception {
     journalist = new Journalist("Ron Burgundy", JournalismType.Broadcast);
-    article = new Article(journalist, "title", "test", CategoryType.Politics, "location.jpg", "summary", "full article");
+    article = new Article(journalist, "title", "test", CategoryType.Tech, "location.jpg", "summary", "full article");
     article.setRating(5);
     journalist.addArticle(article);
   }

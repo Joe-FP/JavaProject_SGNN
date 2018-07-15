@@ -144,8 +144,5 @@ public class Article {
         this.accepted = accepted;
     }
 
-    public void addArticleHit(){
-        this.articleHits ++;
-    }
 
 }
