@@ -1,15 +1,15 @@
-<!--<div class="article-header">-->
-    <!--<h1>$article.getTitle()</h1>-->
-<!--</div>-->
+<div class="article-header">
+    <h1>$article.getTitle()</h1>
+</div>
 
 <div class="article-body">
 
     <div class ="heading">
         <div class="heading-date">
-        <p class = "article_date">$article.getPublishD()</p>
+        <p class = "article_date">Published on: $article.getPublishD()</p>
         </div>
         <div class="heading-category">
-        <p class="article_type">$article.getCategoryType()</p>
+        <p class="article_type">Category: $article.getCategoryType()</p>
         </div>
     </div>
 
@@ -17,13 +17,11 @@
     <img src="$article.getImagePath()" alt="article image">
     </div>
     <p>$article.getFullArticle()</p>
-
     <p>Article Rating: $article.averageRating()</p>
     <p>Article Views: $article.getArticleHits()</p>
     <p>Published by
     <a href="/journalists/$article.getJournalist().getId()">$article.getJournalist().getName()</a>
     </p>
-
 
     <div class="rating">
     <form action ="/articles/$article.getId()/rating" method="post">
