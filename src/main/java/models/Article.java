@@ -3,7 +3,13 @@ package models;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 @Entity
 @Table(name ="articles")
@@ -17,7 +23,8 @@ public class Article {
     private String articleSummary;
     private String fullArticle;
     private int articleHits;
-    private String publishDate;
+    private String publishD;
+    //private Date publishD;
     private int rating;
     private boolean accepted;
 
@@ -25,10 +32,10 @@ public class Article {
 
     }
 
-    public Article(Journalist journalist, String title, CategoryType categoryType, String imagePath, String articleSummary, String fullArticle) {
+    public Article(Journalist journalist, String title, String publishD, CategoryType categoryType, String imagePath, String articleSummary, String fullArticle) {
         this.journalist = journalist;
         this.title = title;
-        //this.publishDate = publishDate;
+        this.publishD = publishD;
         this.categoryType = categoryType;
         this.imagePath = imagePath;
         this.articleSummary = articleSummary;
@@ -114,14 +121,22 @@ public class Article {
         this.articleHits = articleHits;
     }
 
-//    @Column(name="publishDate")
-//    public String getPublishDate() {
-//        return publishDate;
+//    @Column(name="publishD")
+//    public String getPublishD() {
+//        return publishD;
 //    }
 //
-//    public void setPublishDate(String publishDate) {
-//        this.publishDate = publishDate;
-//    }
+//    public void setPublishD(String publishD) { this.publishD = publishD; }
+
+
+
+    @Column(name="publishD")
+    public String getPublishD() {
+        return publishD;
+    }
+
+    public void setPublishD(String publishD) { this.publishD = publishD; }
+
 
     @Column(name="rating")
     public int getRating() {
@@ -141,8 +156,5 @@ public class Article {
         this.accepted = accepted;
     }
 
-    public void addArticleHit(){
-        this.articleHits ++;
-    }
 
 }

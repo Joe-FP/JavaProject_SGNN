@@ -1,11 +1,28 @@
 <h1>Journalist Profile</h1>
 
 <div>
-    <section>
-        <p>Name: $journalist.getName()</p>
-        <p>Rating: $journalist.getRating()</p>
-        <p>Journalism Type: $journalist.getJournalismType().getJournalismType()</p>
-    </section>
+
+    <table>
+
+        <tr>
+            <td>Name:</td>
+            <td>$journalist.getName()</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>Type:</td>
+            <td>$journalist.getJournalismType()</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>Rating:</td>
+            <td>$journalist.getRating()</td>
+            <td></td>
+        </tr>
+
+    </table>
 
     <div class ="buttons">
         <a href="/journalists/$journalist.getId()/edit">Edit</a>
@@ -35,6 +52,9 @@
                 <!--#end-->
             <!--</table>-->
         </div>
-
     </section>
+
 </div>
+
+
+
