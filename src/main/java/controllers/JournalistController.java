@@ -11,6 +11,7 @@ import spark.template.velocity.VelocityTemplateEngine;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
@@ -59,7 +60,7 @@ public class JournalistController {
             return null;
         }, velocityTemplateEngine);
 
-        //Show an individual Journalist
+        //Show individual journalist
         get("journalists/:id", (req, res) ->{
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
@@ -73,7 +74,36 @@ public class JournalistController {
         }, velocityTemplateEngine);
 
 
-        //Delete the current Journalist
+        get("journalists/:id/edit", (req, res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Journalist journalist = DBHelper.find(intId, Journalist.class);
+
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("journalists", journalist);
+
+            model.put("template", "templates/journalists/edit.vtl");
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
+
+        post("/journalists/:id", (req, res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Journalist journalist = DBHelper.find(intId, Journalist.class);
+
+            String name = req.queryParams("name");
+            String type = req.queryParams("journalismType");
+
+            journalist.setName(name);
+            //journalist.setJournalismType(type);
+
+            DBHelper.save(journalist);
+            res.redirect("journalists/:id");
+            return null;
+        }, velocityTemplateEngine);
+
+       //Delete journalist
         post("/journalists/:id/delete", (req, res) ->{
             int id = Integer.parseInt(req.params(":id"));
             Journalist journalistToDelete = DBHelper.find(id, Journalist.class);
@@ -81,7 +111,6 @@ public class JournalistController {
             res.redirect("/journalists");
             return null;
         }, velocityTemplateEngine);
-
 
         get("articles/:id/edit", (req, res) ->{
             HashMap<String, Object> model = new HashMap<>();
@@ -99,7 +128,6 @@ public class JournalistController {
             model.put("template", "templates/articles/edit.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
-
 
         //Edit current Journalist
         get("journalists/:id/edit", (req, res) ->{
