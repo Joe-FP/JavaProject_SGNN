@@ -13,9 +13,9 @@
 }
 
 .article-image img{
-    width: 70%;
-    height: 70%;
-    margin-left: 15%
+    width: 60%;
+    height: 60%;
+    margin-left: 20%
 }
 
 .article_section img{
@@ -26,6 +26,12 @@
 .article-header{
     font-size: 2.5em;
     margin-left: 0.5em;
+}
+
+.article-article{
+    font-size: 1em;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 @media screen and (max-width: 600px) {
