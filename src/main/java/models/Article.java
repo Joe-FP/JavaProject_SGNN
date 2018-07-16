@@ -7,9 +7,7 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 @Entity
 @Table(name ="articles")
@@ -25,7 +23,7 @@ public class Article {
     private int articleHits;
     private String publishD;
     //private Date publishD;
-    private int rating;
+    private List<Rating> ratings;
     private boolean accepted;
 
     public Article(){
@@ -41,8 +39,8 @@ public class Article {
         this.articleSummary = articleSummary;
         this.fullArticle = fullArticle;
         this.articleHits = 0;
-        this.rating = 0;
         this.accepted = false;
+        this.ratings = new ArrayList<Rating>();
     }
 
     @Id
@@ -103,7 +101,7 @@ public class Article {
         this.articleSummary = articleSummary;
     }
 
-    @Column(name="fullArticle", length = 1024)
+    @Column(name="fullArticle", columnDefinition = "TEXT")
     public String getFullArticle() {
         return fullArticle;
     }
@@ -121,15 +119,6 @@ public class Article {
         this.articleHits = articleHits;
     }
 
-//    @Column(name="publishD")
-//    public String getPublishD() {
-//        return publishD;
-//    }
-//
-//    public void setPublishD(String publishD) { this.publishD = publishD; }
-
-
-
     @Column(name="publishD")
     public String getPublishD() {
         return publishD;
@@ -137,14 +126,13 @@ public class Article {
 
     public void setPublishD(String publishD) { this.publishD = publishD; }
 
-
-    @Column(name="rating")
-    public int getRating() {
-        return rating;
+    @OneToMany(mappedBy = "article", fetch = FetchType.EAGER)
+    public List<Rating> getRatings() {
+        return ratings;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setRatings(List<Rating> rating) {
+        this.ratings = rating;
     }
 
     @Column(name="accepted")
@@ -155,6 +143,22 @@ public class Article {
     public void setAccepted(boolean accepted) {
         this.accepted = accepted;
     }
+
+    public double averageRating(){
+        double count = 0;
+        for (Rating rating : ratings) {
+            count += rating.getRating();
+        }
+        double average = count / ratings.size();
+        return average;
+    }
+
+
+
+
+
+
+
 
 
 }
