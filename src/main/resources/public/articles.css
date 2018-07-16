@@ -4,10 +4,12 @@
 
 .article_date{
     float:left;
+    margin-left: 0.5em;
 }
 
 .article_type{
     float:right;
+    margin-right: 0.5em;
 }
 
 .article-image img{
@@ -19,5 +21,16 @@
 .article_section img{
     width: 50%;
     height: 50%;
+}
+
+.article-header{
+    font-size: 2.5em;
+    margin-left: 0.5em;
+}
+
+@media screen and (max-width: 600px) {
+    .article-header  {
+        font-size: 1em;
+    }
 }
 
