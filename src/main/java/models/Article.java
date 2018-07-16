@@ -103,7 +103,7 @@ public class Article {
         this.articleSummary = articleSummary;
     }
 
-    @Column(name="fullArticle", length = 1024)
+    @Column(name="fullArticle", columnDefinition = "TEXT")
     public String getFullArticle() {
         return fullArticle;
     }
