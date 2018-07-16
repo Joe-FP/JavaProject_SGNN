@@ -19,7 +19,7 @@
             <th>Journalist</th>
             <th>Publish Date</th>
             <th>Summary</th>
-            <th>Image</th>
+            <!--<th>Image</th>-->
             <th>Rating</th>
             <th>Hits</th>
         </tr>
@@ -33,8 +33,8 @@
                 <td>$article.getJournalist().getName()</td>
                 <td>$article.getPublishD()</td>
                 <td>$article.getArticleSummary()</td>
-                <td>$article.getImagePath()</td>
-                <td>$article.getRating()</td>
+                <!--<td>$article.getImagePath()</td>-->
+                <td>$article.averageRating()</td>
                 <td>$article.getArticleHits()</td>
                 <td>
                     <!--<form action="/articles/$article.getId()" method="get">-->
