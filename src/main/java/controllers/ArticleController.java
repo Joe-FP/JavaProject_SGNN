@@ -215,18 +215,19 @@ public class ArticleController {
             return null;
         }, velocityTemplateEngine);
 
-        post("/search", (req, res) ->{
-            String searchTerm = req.queryParams("search");
-            List<Article> articles = DBHelper.articlesBySearchTerm(searchTerm);
-            HashMap<String, Object> model = new HashMap<>();
-            ArrayList<String> categories = new ArrayList<>();
-            for (CategoryType cat : CategoryType.values()) {
-                categories.add(cat.name());
-            }
-            model.put("categories", categories);
-            model.put("articles", articles);
-            model.put("template", "templates/search/index.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
+        post("/search", (req, res) -> {
+                    String searchTerm = req.queryParams("search");
+                    List<Article> articles = DBHelper.articlesBySearchTerm(searchTerm);
+                    HashMap<String, Object> model = new HashMap<>();
+                    ArrayList<String> categories = new ArrayList<>();
+                    for (CategoryType cat : CategoryType.values()) {
+                        categories.add(cat.name());
+                    }
+                    model.put("categories", categories);
+                    model.put("articles", articles);
+                    model.put("template", "templates/search/index.vtl");
+                    return new ModelAndView(model, "templates/layout.vtl");
+                }, velocityTemplateEngine);
 
         //Method to return rating
         post("/articles/:id/rating", (req,res) ->{
