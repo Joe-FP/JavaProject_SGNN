@@ -18,7 +18,6 @@ import static spark.Spark.post;
 
 public class JournalistController {
 
-
     public JournalistController(){
         this.setupEndpoints();
     }
@@ -80,11 +79,15 @@ public class JournalistController {
             Integer intId = Integer.parseInt(strId);
             Journalist journalist = DBHelper.find(intId, Journalist.class);
 
+            ArrayList<String> categories = new ArrayList<>();
+            for (JournalismType cat : JournalismType.values()) {
+                categories.add(cat.name());
+            }
+
             HashMap<String, Object> model = new HashMap<>();
-            model.put("journalists", journalist);
-
+            model.put("categories", categories);
+            model.put("journalist", journalist);
             model.put("template", "templates/journalists/edit.vtl");
-
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
@@ -94,13 +97,14 @@ public class JournalistController {
             Journalist journalist = DBHelper.find(intId, Journalist.class);
 
             String name = req.queryParams("name");
-            String type = req.queryParams("journalismType");
+            String type = req.queryParams("category");
+            JournalismType category = JournalismType.valueOf(type);
 
             journalist.setName(name);
-            //journalist.setJournalismType(type);
+            journalist.setJournalismType(category);
 
             DBHelper.save(journalist);
-            res.redirect("journalists/:id");
+            res.redirect("/journalists");
             return null;
         }, velocityTemplateEngine);
 

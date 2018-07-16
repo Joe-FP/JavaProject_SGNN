@@ -27,17 +27,8 @@ public class Seeds {
         Journalist journalist5 = new Journalist("Matt Anders", JournalismType.PR);
         DBHelper.save(journalist5);
 
-        SimpleDateFormat parser = new SimpleDateFormat("yyyy-mm-dd");
-        Date date;
-        try {
-            date = parser.parse("2018-06-22");
-        } catch (ParseException e) {
-            date = null;
-            e.printStackTrace();
-        }
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-        String formattedDate = formatter.format(date);
-
+//         Article article1 = new Article(journalist1, "Title_1", "2018-08-22", CategoryType.Weather, "/images/article-images/achievement-agreement-arms-1068523.jpg", "summary", "full article");
+//         DBHelper.save(article1);
 
         Article article1 = new Article(journalist1, "Lorem Ipsum1", formattedDate, CategoryType.Weather, "/images/article-images/achievement-agreement-arms-1068523.jpg", "summary", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod velit mauris, in rutrum velit interdum et. Vestibulum convallis nibh non consectetur dictum. Curabitur mattis dolor sit amet turpis fringilla vulputate. Nulla facilisi. Maecenas condimentum justo ac ligula lacinia blandit. Proin imperdiet ultrices velit vel pretium. Integer finibus gravida orci in dictum. Donec eget sodales risus. Nulla scelerisque quam ex, eget semper lectus faucibus varius. Nam pulvinar nisi dolor, eget euismod ex sodales in. Fusce sollicitudin rutrum blandit. Nam ullamcorper hendrerit massa eget efficitur. Donec maximus ut orci fermentum dictum. Maecenas semper dolor vitae elit sollicitudin, efficitur vehicula leo ultricies. Duis lectus nibh, aliquam ut ipsum at, rutrum condimentum metus. Phasellus finibus libero quam, mollis pharetra mi feugiat accumsan. Fusce fringilla dolor eget porta tincidunt. Curabitur auctor sodales dolor nec placerat. In hac habitasse platea dictumst. Proin auctor ligula interdum, finibus felis eget, ultrices nulla. Morbi condimentum volutpat lorem, in lobortis ipsum volutpat sit amet. Aenean consequat congue orci in imperdiet. Pellentesque malesuada urna et nulla vestibulum aliquet sed et orci. Donec posuere mattis arcu quis pellentesque. Nunc suscipit semper fermentum. Vivamus commodo fringilla nibh, sit amet placerat enim tincidunt");
         DBHelper.save(article1);

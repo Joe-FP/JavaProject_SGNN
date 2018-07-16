@@ -1,5 +1,4 @@
 package controllers;
-
 import db.DBHelper;
 import models.Article;
 import models.CategoryType;
@@ -7,7 +6,6 @@ import models.Journalist;
 import models.Rating;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
-
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
 import static spark.Spark.get;
 import static spark.Spark.post;
 
@@ -29,10 +26,40 @@ public class ArticleController {
 
         VelocityTemplateEngine velocityTemplateEngine = new VelocityTemplateEngine();
 
-
         get("/articles", (req, res) ->{
             HashMap<String, Object> model = new HashMap<>();
             List<Article> articles = DBHelper.getAll(Article.class);
+
+            ArrayList<String> categories = new ArrayList<>();
+            for (CategoryType cat : CategoryType.values()) {
+                categories.add(cat.name());
+            }
+
+            model.put("categories", categories);
+            model.put("articles", articles);
+            model.put("template", "templates/articles/index.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
+
+
+        get("/articles/bydate", (req, res) ->{
+            HashMap<String, Object> model = new HashMap<>();
+            List<Article> articles = DBHelper.orderByPublishDate();
+
+            ArrayList<String> categories = new ArrayList<>();
+            for (CategoryType cat : CategoryType.values()) {
+                categories.add(cat.name());
+            }
+
+            model.put("categories", categories);
+            model.put("articles", articles);
+            model.put("template", "templates/articles/index.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
+
+        get("/articles/byhits", (req, res) ->{
+            HashMap<String, Object> model = new HashMap<>();
+            List<Article> articles = DBHelper.orderByArticleHits();
 
             ArrayList<String> categories = new ArrayList<>();
             for (CategoryType cat : CategoryType.values()) {
@@ -187,6 +214,19 @@ public class ArticleController {
             res.redirect("/articles");
             return null;
         }, velocityTemplateEngine);
+
+        post("/search", (req, res) ->{
+            String searchTerm = req.queryParams("search");
+            List<Article> articles = DBHelper.articlesBySearchTerm(searchTerm);
+            HashMap<String, Object> model = new HashMap<>();
+            ArrayList<String> categories = new ArrayList<>();
+            for (CategoryType cat : CategoryType.values()) {
+                categories.add(cat.name());
+            }
+            model.put("categories", categories);
+            model.put("articles", articles);
+            model.put("template", "templates/search/index.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
 
         //Method to return rating
         post("/articles/:id/rating", (req,res) ->{
