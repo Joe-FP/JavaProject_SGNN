@@ -3,6 +3,7 @@ package db;
 import models.Article;
 import models.Journalist;
 import org.hibernate.*;
+import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
@@ -95,6 +96,7 @@ public class DBHelper {
     public static <T> List<T> getAll(Class classType) {
         session = HibernateUtil.getSessionFactory().openSession();
         Criteria cr = session.createCriteria(classType);
+        cr.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
         return getList(cr);
     }
 

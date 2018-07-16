@@ -4,6 +4,7 @@ import db.DBHelper;
 import models.Article;
 import models.CategoryType;
 import models.Journalist;
+import models.Rating;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -184,6 +185,23 @@ public class ArticleController {
             Article articleToDelete = DBHelper.find(id, Article.class);
             DBHelper.delete(articleToDelete);
             res.redirect("/articles");
+            return null;
+        }, velocityTemplateEngine);
+
+        //Method to return rating
+        post("/articles/:id/rating", (req,res) ->{
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Article article = DBHelper.find(intId, Article.class);
+
+            String ratingStr = req.queryParams("rating");
+            int ratingInt = Integer.parseInt(ratingStr);
+            Rating rating = new Rating(article, ratingInt);
+            DBHelper.save(rating);
+
+//            article.setRating(article.getRating() + );
+//            DBHelper.save(article);
+            res.redirect("/articles/" + strId);
             return null;
         }, velocityTemplateEngine);
 

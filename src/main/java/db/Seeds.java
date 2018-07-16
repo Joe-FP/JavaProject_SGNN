@@ -10,9 +10,11 @@ import java.util.Date;
 public class Seeds {
 
     public static void seedData(){
+        DBHelper.deleteAll(Rating.class);
         DBHelper.deleteAll(Article.class);
         DBHelper.deleteAll(Journalist.class);
-        DBHelper.deleteAll(News.class);
+
+
 
         Journalist journalist1 = new Journalist("Vivian Rook", JournalismType.Broadcast);
         DBHelper.save(journalist1);
@@ -77,5 +79,14 @@ public class Seeds {
         DBHelper.save(article19);
         Article article20 = new Article(journalist5, "Lorem Ipsum20",formattedDate, CategoryType.Crime, "/images/article-images/camera-canon-dslr-243757.jpg", "summary", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod velit mauris, in rutrum velit interdum et. Vestibulum convallis nibh non consectetur dictum. Curabitur mattis dolor sit amet turpis fringilla vulputate. Nulla facilisi. Maecenas condimentum justo ac ligula lacinia blandit. Proin imperdiet ultrices velit vel pretium. Integer finibus gravida orci in dictum. Donec eget sodales risus. Nulla scelerisque quam ex, eget semper lectus faucibus varius. Nam pulvinar nisi dolor, eget euismod ex sodales in. Fusce sollicitudin rutrum blandit. Nam ullamcorper hendrerit massa eget efficitur. Donec maximus ut orci fermentum dictum. Maecenas semper dolor vitae elit sollicitudin, efficitur vehicula leo ultricies. Duis lectus nibh, aliquam ut ipsum at, rutrum condimentum metus. Phasellus finibus libero quam, mollis pharetra mi feugiat accumsan. Fusce fringilla dolor eget porta tincidunt. Curabitur auctor sodales dolor nec placerat. In hac habitasse platea dictumst. Proin auctor ligula interdum, finibus felis eget, ultrices nulla. Morbi condimentum volutpat lorem, in lobortis ipsum volutpat sit amet. Aenean consequat congue orci in imperdiet. Pellentesque malesuada urna et nulla vestibulum aliquet sed et orci. Donec posuere mattis arcu quis pellentesque. Nunc suscipit semper fermentum. Vivamus commodo fringilla nibh, sit amet placerat enim tincidunt");
         DBHelper.save(article20);
+
+        Rating article1Review1 = new Rating(article1, 5);
+        Rating article1Review2 = new Rating(article1, 6);
+        Rating article1Review3 = new Rating(article1, 7);
+
+        DBHelper.save(article1Review1);
+        DBHelper.save(article1Review2);
+        DBHelper.save(article1Review3);
+
     }
 }
