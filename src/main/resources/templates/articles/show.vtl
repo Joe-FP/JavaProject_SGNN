@@ -2,45 +2,31 @@
     <!--<h1>$article.getTitle()</h1>-->
 <!--</div>-->
 
-<div class="main">
+<div class="article-body">
 
-    <table>
+    <div class ="heading">
+        <div class="heading-date">
+        <p class = "article_date">$article.getPublishDate()</p>
+        </div>
+        <div class="heading-category">
+        <p class="article_type">$article.getCategoryType().getType()</p>
+        </div>
+    </div>
 
-    <th></th>
-    <th></th>
-    <th></th>
+    <div class="article-image">
+    <img src="$article.getImagePath()" alt="article image">
+    </div>
+    <p>$article.getFullArticle()</p>
+    <p>$article.getRating()</p>
+    <p>Published by
+    <a href="/journalists/$journalist.getId()">$article.getJournalist().getName()</a>
+    </p>
 
-    <tr>
-        <td><h1>$article.getTitle()</h1></td>
-        <td></td>
-        <td>Published on: $article.getPublishD()</td>
-    </tr>
+    <div class="rating">
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        <input type="submit" value="Rate">
+    </div>
 
-    <tr>
-        <td></td>
-        <td>$article.getImagePath()</td>
-        <td></td>
-    </tr>
-
-    <tr>
-        <td></td>
-        <td>$article.getFullArticle()</td>
-        <td></td>
-    </tr>
-
-    <tr>
-        <td></td>
-        <td></td>
-        <td> Written by: $article.getJournalist().getName()</td>
-    </tr>
-
-    <tr>
-        <td></td>
-        <td></td>
-        <td>Article views: $article.getArticleHits()</td>
-    </tr>
-
-    </table>
 
 </div>
 

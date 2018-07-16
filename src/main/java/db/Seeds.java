@@ -25,7 +25,6 @@ public class Seeds {
         Journalist journalist5 = new Journalist("Matt Anders", JournalismType.PR);
         DBHelper.save(journalist5);
 
-
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-mm-dd");
         Date date;
         try {
@@ -90,7 +89,5 @@ public class Seeds {
 //        DBHelper.save(article19);
 //        Article article20 = new Article(journalist5, "Lorem Ipsum20", CategoryType.CRIME, "/images1", "summary", "full article");
 //        DBHelper.save(article20);
-
-
     }
 }

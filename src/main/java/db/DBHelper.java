@@ -3,6 +3,7 @@ package db;
 import models.Article;
 import models.Journalist;
 import org.hibernate.*;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -110,6 +111,59 @@ public class DBHelper {
         Criteria criteria = session.createCriteria(Article.class);
         criteria.add(Restrictions.eq("journalist", journalist));
         return getList(criteria);
+    }
+
+    //Method to order the articles by hits
+
+    public static List<Article> orderByArticleHits() {
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Article> articles = null;
+        try {
+            Criteria cr = session.createCriteria(Article.class);
+            cr.addOrder(Order.desc("articleHits"));
+            articles = cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return articles;
+    }
+
+    //Method to order articles by their published date
+
+    public static List<Article> orderByPublishDate() {
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Article> articles = null;
+        try {
+            Criteria cr = session.createCriteria(Article.class);
+            cr.addOrder(Order.desc("publishDate"));
+            articles = cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return articles;
+    }
+
+    // Method to use the search bar
+
+    public static List<Article> searchArticlesTitle(String search) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Article> results = null;
+        try {
+            Criteria cr = session.createCriteria(Article.class);
+            cr.add(Restrictions.ilike("title", "%" + search + "%"));
+            results = cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        if (results.size() > 0) {
+            return results;}
+        else return null;
     }
 
 

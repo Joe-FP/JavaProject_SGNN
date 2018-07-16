@@ -1,0 +1,23 @@
+.heading{
+    overflow: hidden;
+}
+
+.article_date{
+    float:left;
+}
+
+.article_type{
+    float:right;
+}
+
+.article-image img{
+    width: 70%;
+    height: 70%;
+    margin-left: 15%
+}
+
+.article_section img{
+    width: 50%;
+    height: 50%;
+}
+

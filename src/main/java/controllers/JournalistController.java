@@ -65,6 +65,7 @@ public class JournalistController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Journalist journalist = DBHelper.find(intId, Journalist.class);
+
             List<Article> articles= DBHelper.getAllArticlesWrittenByJournalist(journalist);
             HashMap<String, Object> model = new HashMap<>();
             model.put("journalist", journalist);
