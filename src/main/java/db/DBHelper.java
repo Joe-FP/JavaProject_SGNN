@@ -137,7 +137,7 @@ public class DBHelper {
         List<Article> articles = null;
         try {
             Criteria cr = session.createCriteria(Article.class);
-            cr.addOrder(Order.desc("publishDate"));
+            cr.addOrder(Order.asc("publishD"));
             articles = cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -149,12 +149,12 @@ public class DBHelper {
 
     // Method to use the search bar
 
-    public static List<Article> searchArticlesTitle(String search) {
+    public static List<Article> articlesBySearchTerm(String searchTerm) {
         session = HibernateUtil.getSessionFactory().openSession();
         List<Article> results = null;
         try {
             Criteria cr = session.createCriteria(Article.class);
-            cr.add(Restrictions.ilike("title", "%" + search + "%"));
+            cr.add(Restrictions.ilike("title", "%" + searchTerm + "%"));
             results = cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();

@@ -25,69 +25,26 @@ public class Seeds {
         Journalist journalist5 = new Journalist("Matt Anders", JournalismType.PR);
         DBHelper.save(journalist5);
 
-        SimpleDateFormat parser = new SimpleDateFormat("yyyy-mm-dd");
-        Date date;
-        try {
-            date = parser.parse("2018-06-22");
-        } catch (ParseException e) {
-            date = null;
-            e.printStackTrace();
-        }
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-        String formattedDate = formatter.format(date);
-
-
-        Article article1 = new Article(journalist1, "Lorem Ipsum1", formattedDate, CategoryType.Weather, "/images/article-images/achievement-agreement-arms-1068523.jpg", "summary", "full article");
+        Article article1 = new Article(journalist1, "Title_1", "2018-08-22", CategoryType.Weather, "/images/article-images/achievement-agreement-arms-1068523.jpg", "summary", "full article");
         DBHelper.save(article1);
-        Article article2 = new Article(journalist1, "Lorem Ipsum2", formattedDate, CategoryType.Business, "/images/article-images/aerial-architecture-art-1064129.jpg", "summary", "full article");
+        Article article2 = new Article(journalist1, "Title_2", "2018-06-23", CategoryType.Business, "/images/article-images/aerial-architecture-art-1064129.jpg", "summary", "full article");
         DBHelper.save(article2);
-        Article article3 = new Article(journalist1, "Lorem Ipsum3", formattedDate, CategoryType.Industry, "/images/article-images/beautiful-blooming-bouquet-1083822.jpg", "summary", "full article");
+        Article article3 = new Article(journalist1, "Title_3", "2018-06-24", CategoryType.Industry, "/images/article-images/beautiful-blooming-bouquet-1083822.jpg", "summary", "full article");
         DBHelper.save(article3);
-        Article article4 = new Article(journalist2, "Lorem Ipsum4", formattedDate, CategoryType.Crime, "/images/article-images/botanical-bright-close-up-1073078.jpg", "summary", "full article");
+        Article article4 = new Article(journalist2, "Title_4", "2018-07-22", CategoryType.Crime, "/images/article-images/botanical-bright-close-up-1073078.jpg", "summary", "full article");
         DBHelper.save(article4);
-        Article article5 = new Article(journalist3, "Lorem Ipsum5", formattedDate, CategoryType.Tech, "/images/article-images/camera-canon-dslr-243757.jpg", "summary", "full article");
+        Article article5 = new Article(journalist3, "Title_5", "2018-07-23", CategoryType.Tech, "/images/article-images/camera-canon-dslr-243757.jpg", "summary", "full article");
         DBHelper.save(article5);
+        Article article6 = new Article(journalist1, "Title_6", "2018-07-24", CategoryType.Weather, "/images/article-images/achievement-agreement-arms-1068523.jpg", "summary", "full article");
+        DBHelper.save(article6);
+        Article article7 = new Article(journalist1, "Title_7", "2018-08-13", CategoryType.Business, "/images/article-images/aerial-architecture-art-1064129.jpg", "summary", "full article");
+        DBHelper.save(article7);
+        Article article8 = new Article(journalist1, "Title_8", "2018-06-12", CategoryType.Weather, "/images/article-images/beautiful-blooming-bouquet-1083822.jpg", "summary", "full article");
+        DBHelper.save(article8);
+        Article article9 = new Article(journalist2, "Title_9", "2018-08-15", CategoryType.Crime, "/images/article-images/botanical-bright-close-up-1073078.jpg", "summary", "full article");
+        DBHelper.save(article9);
+        Article article10 = new Article(journalist3, "Title_10", "2018-08-16", CategoryType.Tech, "/images/article-images/camera-canon-dslr-243757.jpg", "summary", "full article");
+        DBHelper.save(article10);
 
-
-//        Article article1 = new Article(journalist1, "Lorem Ipsum1", "test", CategoryType.Weather, "/images1", "summary", "full article");
-//        DBHelper.save(article1);
-//        Article article2 = new Article(journalist1, "Lorem Ipsum2", "date", CategoryType.Business, "/images2", "summary", "full article");
-//        DBHelper.save(article2);
-//        Article article3 = new Article(journalist1, "Lorem Ipsum3", "date", CategoryType.Industry, "/images3", "summary", "full article");
-//        DBHelper.save(article3);
-//        Article article4 = new Article(journalist2, "Lorem Ipsum4", "test", CategoryType.Crime, "/images1", "summary", "full article");
-//        DBHelper.save(article4);
-//        Article article5 = new Article(journalist3, "Lorem Ipsum5", "test", CategoryType.Tech, "/images1", "summary", "full article");
-//        DBHelper.save(article5);
-//        Article article6 = new Article(journalist5, "Lorem Ipsum6", CategoryType.ENTERTAINMENT, "/images1", "summary", "full article");
-//        DBHelper.save(article6);
-//        Article article7 = new Article(journalist1, "Lorem Ipsum7", CategoryType.TECH, "/images1", "summary", "full article");
-//        DBHelper.save(article7);
-//        Article article8 = new Article(journalist2, "Lorem Ipsum8", CategoryType.POLITICS, "/images1", "summary", "full article");
-//        DBHelper.save(article8);
-//        Article article9 = new Article(journalist3, "Lorem Ipsum9", CategoryType.INDUSTRY, "/images1", "summary", "full article");
-//        DBHelper.save(article9);
-//        Article article10 = new Article(journalist4, "Lorem Ipsum10", CategoryType.WORLD, "/images1", "summary", "full article");
-//        DBHelper.save(article10);
-//        Article article11 = new Article(journalist5, "Lorem Ipsum11", CategoryType.POLITICS, "/images1", "summary", "full article");
-//        DBHelper.save(article11);
-//        Article article12 = new Article(journalist3, "Lorem Ipsum12", CategoryType.CRIME, "/images1", "summary", "full article");
-//        DBHelper.save(article12);
-//        Article article13 = new Article(journalist2, "Lorem Ipsum13", CategoryType.BUSINESS, "/images1", "summary", "full article");
-//        DBHelper.save(article13);
-//        Article article14 = new Article(journalist4, "Lorem Ipsum14", CategoryType.WORLD, "/images1", "summary", "full article");
-//        DBHelper.save(article14);
-//        Article article15 = new Article(journalist1, "Lorem Ipsum15", CategoryType.INDUSTRY, "/images1", "summary", "full article");
-//        DBHelper.save(article15);
-//        Article article16 = new Article(journalist5, "Lorem Ipsum16", CategoryType.ENTERTAINMENT, "/images1", "summary", "full article");
-//        DBHelper.save(article16);
-//        Article article17 = new Article(journalist3, "Lorem Ipsum17", CategoryType.EDUCATION, "/images1", "summary", "full article");
-//        DBHelper.save(article17);
-//        Article article18 = new Article(journalist4, "Lorem Ipsum18", CategoryType.HEALTH, "/images1", "summary", "full article");
-//        DBHelper.save(article18);
-//        Article article19 = new Article(journalist2, "Lorem Ipsum19", CategoryType.BUSINESS, "/images1", "summary", "full article");
-//        DBHelper.save(article19);
-//        Article article20 = new Article(journalist5, "Lorem Ipsum20", CategoryType.CRIME, "/images1", "summary", "full article");
-//        DBHelper.save(article20);
     }
 }
