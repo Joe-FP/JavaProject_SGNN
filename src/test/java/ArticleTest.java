@@ -22,24 +22,7 @@ public class ArticleTest {
 //    public void setUp() throws Exception {
 //        journalist = new Journalist("Ron Burgundy", JournalismType.Broadcast);
 //        DBHelper.save(journalist);
-//
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        Date date;
-//
-//        try {
-//            date = simpleDateFormat.parse("2012-12-24");
-//        } catch (ParseException e) {
-//            date = null;
-//            e.printStackTrace();
-//        }
-//
-//        article = new Article(journalist, "title", date, CategoryType.Weather, "location.jpg", "summary", "full article");
+//        article = new Article(journalist, "title", "2018-08-01", CategoryType.Weather, "location.jpg", "summary", "full article");
 //        DBHelper.save(article);
-//    }
-
-//    @Test
-//    public void canAddArticleHit() {
-//        article.addArticleHit();
-//        assertEquals(1, article.getArticleHits());
 //    }
 }

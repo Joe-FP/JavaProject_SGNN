@@ -1,12 +1,4 @@
-<h1>All Articles</h1>
-
-<div>
-    <a href="/articles/new" class="button center">New Articles</a>
-    <p></p>
-    <a href="/articles/bydate" class="button center">Order by date</a>
-    <p></p>
-    <a href="/articles/byhits" class="button center">Order by hits</a>
-</div>
+<h1>Search results</h1>
 
 <div>
 
@@ -34,7 +26,7 @@
             <td>$article.getPublishD()</td>
             <td>$article.getArticleSummary()</td>
             <td>$article.getImagePath()</td>
-            <td>$article.getRating()</td>
+            <td>$article.averageRating()</td>
             <td>$article.getArticleHits()</td>
             <td>
                 <form action="/articles/$article.getId()/view" method="post">

@@ -1,30 +1,18 @@
 <h1>All Articles</h1>
 
 <div>
-    <a href="/articles/new" class="button center">New Articles</a>
+    <a href="/articles/new" class="button center">New Article</a>
     <p></p>
     <a href="/articles/bydate" class="button center">Order by date</a>
     <p></p>
-    <a href="/articles/byhits" class="button center">Order by hits</a>
+    <a href="/articles/byhits" class="button center">Order by views</a>
 </div>
 
 <div>
-
     #foreach ($category in $categories)
 
     <h2>$category</h2>
     <table>
-        <tr>
-            <th>Title</th>
-            <th>Journalist</th>
-            <th>Publish Date</th>
-            <th>Summary</th>
-            <!--<th>Image</th>-->
-            <th>Rating</th>
-            <th>Hits</th>
-        </tr>
-
-
         #foreach ($article in $articles)
             #if ($article.getCategoryType() == $category)
 
@@ -33,59 +21,19 @@
                 <td>$article.getJournalist().getName()</td>
                 <td>$article.getPublishD()</td>
                 <td>$article.getArticleSummary()</td>
-                <!--<td>$article.getImagePath()</td>-->
+                <td>$article.getImagePath()</td>
                 <td>$article.averageRating()</td>
                 <td>$article.getArticleHits()</td>
                 <td>
-                    <!--<form action="/articles/$article.getId()" method="get">-->
-                        <!--<input type="submit" value="View"/>-->
-                    <!--</form>-->
-
-                    <form action="/articles/$article.getId()" method="get">
+                    <form action="/articles/$article.getId()/view" method="post">
                         <input type="submit" value="View"/>
                     </form>
                 </td>
             </tr>
-
             #end
         #end
-
-
     </table>
-
     #end
-
 </div>
 
 
-
-<!--<div>-->
-    <!--<table>-->
-        <!--<tr>-->
-            <!--<th>Title</th>-->
-            <!--<th>Journalist</th>-->
-            <!--<th>Publish Date</th>-->
-            <!--<th>Category</th>-->
-            <!--<th>Summary</th>-->
-            <!--<th>Image</th>-->
-            <!--<th>Rating</th>-->
-        <!--</tr>-->
-        <!--#foreach ($article in $articles)-->
-        <!--<tr>-->
-            <!--<td>$article.getTitle()</td>-->
-            <!--<td>$article.getJournalist().getName()</td>-->
-            <!--<td>$article.getPublishD()</td>-->
-            <!--<td>$article.getCategoryType()</td>-->
-            <!--<td>$article.getArticleSummary()</td>-->
-            <!--<td>$article.getImagePath()</td>-->
-            <!--<td>$article.getRating()</td>-->
-            <!--<td>-->
-                <!--<form action="/articles/$article.getId()" method="get">-->
-                    <!--<input type="submit" value="View"/>-->
-                <!--</form>-->
-            <!--</td>-->
-        <!--</tr>-->
-        <!--#end-->
-    <!--</table>-->
-
-<!--</div>-->
