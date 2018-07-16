@@ -38,15 +38,15 @@ public class Seeds {
         String formattedDate = formatter.format(date);
 
 
-        Article article1 = new Article(journalist1, "Lorem Ipsum1", formattedDate, CategoryType.Weather, "/images1", "summary", "full article");
+        Article article1 = new Article(journalist1, "Lorem Ipsum1", formattedDate, CategoryType.Weather, "/images/article-images/achievement-agreement-arms-1068523.jpg", "summary", "full article");
         DBHelper.save(article1);
-        Article article2 = new Article(journalist1, "Lorem Ipsum2", formattedDate, CategoryType.Business, "/images2", "summary", "full article");
+        Article article2 = new Article(journalist1, "Lorem Ipsum2", formattedDate, CategoryType.Business, "/images/article-images/aerial-architecture-art-1064129.jpg", "summary", "full article");
         DBHelper.save(article2);
-        Article article3 = new Article(journalist1, "Lorem Ipsum3", formattedDate, CategoryType.Industry, "/images3", "summary", "full article");
+        Article article3 = new Article(journalist1, "Lorem Ipsum3", formattedDate, CategoryType.Industry, "/images/article-images/beautiful-blooming-bouquet-1083822.jpg", "summary", "full article");
         DBHelper.save(article3);
-        Article article4 = new Article(journalist2, "Lorem Ipsum4", formattedDate, CategoryType.Crime, "/images1", "summary", "full article");
+        Article article4 = new Article(journalist2, "Lorem Ipsum4", formattedDate, CategoryType.Crime, "/images/article-images/botanical-bright-close-up-1073078.jpg", "summary", "full article");
         DBHelper.save(article4);
-        Article article5 = new Article(journalist3, "Lorem Ipsum5", formattedDate, CategoryType.Tech, "/images1", "summary", "full article");
+        Article article5 = new Article(journalist3, "Lorem Ipsum5", formattedDate, CategoryType.Tech, "/images/article-images/camera-canon-dslr-243757.jpg", "summary", "full article");
         DBHelper.save(article5);
 
 
