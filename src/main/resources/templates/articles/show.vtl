@@ -18,7 +18,7 @@
     </div>
     <p>$article.getFullArticle()</p>
 
-    <p>Article Rating: $article.getRating()</p>
+    <p>Article Rating: $article.averageRating()</p>
     <p>Article Views: $article.getArticleHits()</p>
     <p>Published by
     <a href="/journalists/$article.getJournalist().getId()">$article.getJournalist().getName()</a>
@@ -32,23 +32,15 @@
         <input type="radio" name="rating" value="3">
         <input type="radio" name="rating" value="4">
         <input type="radio" name="rating" value="5">
-
         <input type="submit" value="Submit Rating">
-
-
-
     </form>
-</div>
 
+<!--</div>-->
     <!--<div class="rating">-->
         <!--<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>-->
         <!--<input type="submit" value="Rate">-->
     <!--</div>-->
-
-    <p>Average Rating:</p>
-    <p>$article.averageRating()</p>
-
-</div>
+<!--</div>-->
 
 <div class="right">
 

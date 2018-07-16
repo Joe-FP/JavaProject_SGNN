@@ -1,12 +1,6 @@
 package models;
-
 import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Entity
@@ -22,9 +16,7 @@ public class Article {
     private String fullArticle;
     private int articleHits;
     private String publishD;
-    //private Date publishD;
     private List<Rating> ratings;
-    private boolean accepted;
 
     public Article(){
 
@@ -39,7 +31,6 @@ public class Article {
         this.articleSummary = articleSummary;
         this.fullArticle = fullArticle;
         this.articleHits = 0;
-        this.accepted = false;
         this.ratings = new ArrayList<Rating>();
     }
 
@@ -135,17 +126,9 @@ public class Article {
         this.ratings = rating;
     }
 
-    @Column(name="accepted")
-    public boolean getAccepted() {
-        return accepted;
-    }
-
-    public void setAccepted(boolean accepted) {
-        this.accepted = accepted;
-    }
-
     public double averageRating(){
         double count = 0;
+        if(this.ratings.size() == 0){ return count;}
         for (Rating rating : ratings) {
             count += rating.getRating();
         }
