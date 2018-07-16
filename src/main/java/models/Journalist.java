@@ -23,8 +23,8 @@ public class Journalist {
 
     public Journalist(String name, JournalismType journalismType) {
         this.name = name;
-        this.rating = 0;
         this.journalismType = journalismType;
+        this.rating = 0;
         this.articles = new ArrayList<Article>();
     }
 

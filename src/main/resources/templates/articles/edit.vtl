@@ -1,45 +1,99 @@
 <h1>Edit Article</h1>
 
 <form action="/articles/$article.getId()" method="post">
-    <label for="title">Headline:</label>
-    <input class="inputBox" type="text" name="title" id="title" value="$article.getTitle()" required="true">
 
-    <label for="journalist">Journalist:</label>
-    <select id="journalist" name="journalist">
-        #foreach( $journalist in $journalists )
-        <option value="$journalist.getId()"
-                #if ($journalist.getId() == $article.getJournalist().getId())
-                selected="selected"
-                #end>
-            $journalist.getName()</option>
-        #end
-    </select>
+    <table>
 
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
 
-    <!--<label for="categoryType">Category:</label>-->
-    <!--<select id="categoryType" name="categoryType">-->
-        <!--#foreach( $categoryType in $categoryTypes )-->
-        <!--<option value="$categoryType.getValue()"-->
-                <!--#if ($categoryType.getValue() == $article.getCategory().getValue())-->
-                <!--selected="selected"-->
-                <!--#end>-->
-            <!--$categoryType.getValue()</option>-->
-        <!--#end-->
-    <!--</select>-->
+        <tr>
+            <td>Journalist:</td>
+            <td>
+                <select id="journalist" name="journalist">
+                    #foreach( $journalist in $journalists )
+                    <option value="$journalist.getId()"
+                            #if ($journalist.getId() == $article.getJournalist().getId())
+                            selected="selected"
+                            #end>
+                        $journalist.getName()
+                    </option>
+                    #end
+                </select>
+            </td>
+            <td></td>
+        </tr>
 
-    <label for="categoryType">Category:</label>
-    <input class="inputBox" type="text" name="categoryType" required="true" id="categoryType" value="$article.getCategoryType()" >
+        <tr>
+            <td>Title:</td>
+            <td><input class="inputBox" type="text" name="title" id="title" value="$article.getTitle()" required="true"></td>
+            <td></td>
+        </tr>
 
+        <tr>
+            <td>Date:</td>
+            <td><input type="date" class="inputBox" name="publishD" value="$article.getPublishD()" required="true" id="publishD"></td>
+            <!--<td><input class="inputBox" type="text"  name="publishD" value="$article.getPublishD()"  id="publishD" required="true"></td>-->
+            <td></td>
+        </tr>
 
-    <label for="imagePath">Image:</label>
-    <input class="inputBox" type="file" name="imagePath" id="imagePath" value="$article.getImagePath()">
+        <tr>
+            <td>Category:</td>
+            <td>
+                <select id="category" name ="category">
+                    #foreach ( $category in $categories )
+                    <option value="$category"
+                            #if ($category == $article.getCategoryType())
+                            selected="selected"
+                            #end>
+                        $category
+                    </option>
+                    #end
+                </select>
+            </td>
+            <td></td>
+        </tr>
 
-    <label for="articleSummary">Article Summary:</label>
-    <input class="inputBox" type="text" name="articleSummary" id="articleSummary" value="$article.getArticleSummary()" required="true">
+        <tr>
+            <td>Summary:</td>
+            <td><input class="inputBox" type="text" name="articleSummary" id="articleSummary" value="$article.getArticleSummary()" required="true"></td>
+            <td></td>
+        </tr>
 
-    <label for="fullArticle">Full Article:</label>
-    <input class="inputBox" type="text" name="fullArticle" id="fullArticle" value="$article.getFullArticle()" required="true">
+        <tr>
+            <td>Article:</td>
+            <td><input class="inputBox" type="text" name="fullArticle" id="fullArticle" value="$article.getFullArticle()" required="true"></td>
+            <td></td>
+        </tr>
 
-    <input type="submit" value="Save" class="button">
+        <tr>
+            <td>Image:</td>
+            <td><input class="inputBox" type="file" name="imagePath" id="imagePath" value="$article.getImagePath()"></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Save" class="button"></td>
+            <td></td>
+        </tr>
+
+    </table>
 
 </form>
+
+
+
+<!--<label for="categoryType">Category:</label>-->
+<!--<select id="categoryType" name="categoryType">-->
+<!--#foreach( $categoryType in $categoryTypes )-->
+<!--<option value="$categoryType.getValue()"-->
+<!--#if ($categoryType.getValue() == $article.getCategory().getValue())-->
+<!--selected="selected"-->
+<!--#end>-->
+<!--$categoryType.getValue()</option>-->
+<!--#end-->
+<!--</select>-->

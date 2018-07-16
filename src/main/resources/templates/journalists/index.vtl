@@ -8,11 +8,13 @@
     <table>
         <tr>
             <th>Name</th>
+            <th>Category</th>
             <th>Rating</th>
         </tr>
         #foreach ($journalist in $journalists)
         <tr>
             <td>$journalist.getName()</td>
+            <td>$journalist.getJournalismType()</td>
             <td>$journalist.getRating()</td>
             <td>
                 <form action="/journalists/$journalist.getId()" method="get">
@@ -22,4 +24,5 @@
         </tr>
         #end
     </table>
+
 </div>
