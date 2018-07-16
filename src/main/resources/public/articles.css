@@ -34,6 +34,16 @@
     margin-right: 15%;
 }
 
+.article-index{
+float:left;
+width: 49%
+}
+
+.article-index-images{
+    width: 40%;
+    height: 40%;
+}
+
 @media screen and (max-width: 600px) {
     .article-header  {
         font-size: 1em;

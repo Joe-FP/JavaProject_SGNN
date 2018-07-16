@@ -8,32 +8,65 @@
     <a href="/articles/byhits" class="button center">Order by views</a>
 </div>
 
+
+
 <div>
+
     #foreach ($category in $categories)
 
+<div>
     <h2>$category</h2>
-    <table>
-        #foreach ($article in $articles)
-            #if ($article.getCategoryType() == $category)
-
-            <tr>
-                <td>$article.getTitle()</td>
-                <td>$article.getJournalist().getName()</td>
-                <td>$article.getPublishD()</td>
-                <td>$article.getArticleSummary()</td>
-                <td>$article.getImagePath()</td>
-                <td>$article.averageRating()</td>
-                <td>$article.getArticleHits()</td>
-                <td>
-                    <form action="/articles/$article.getId()/view" method="post">
-                        <input type="submit" value="View"/>
-                    </form>
-                </td>
-            </tr>
-            #end
-        #end
-    </table>
+<div>
+    #foreach($article in $articles)
+    #if ($article.getCategoryType() == $category)
+    <div class= "article-index">
+        <a href="/articles/$article.getId()" ><img class="article-index-images" src="$article.getImagePath()"
+            alt="article image"></a>
+    <div>
+        <p>$article.getTitle()</p>
+    </div>
+        <div>
+            <p>$article.getArticleSummary()</p>
+        </div>
+    </div>
     #end
+    #end
+#end
 </div>
+</div>
+</div>
+
+
+
+<!--Remove when happy with CSS-->
+
+<!--<div>-->
+<!--#foreach ($category in $categories)-->
+
+<!--<h2>$category</h2>-->
+<!--<table>-->
+<!--#foreach ($article in $articles)-->
+<!--#if ($article.getCategoryType() == $category)-->
+
+<!--<tr>-->
+<!--<td>$article.getTitle()</td>-->
+<!--<td>$article.getJournalist().getName()</td>-->
+<!--<td>$article.getPublishD()</td>-->
+<!--<td>$article.getArticleSummary()</td>-->
+<!--<td>$article.averageRating()</td>-->
+<!--<td>$article.getArticleHits()</td>-->
+<!--<td>-->
+<!--<form action="/articles/$article.getId()/view" method="post">-->
+<!--<input type="submit" value="View"/>-->
+<!--</form>-->
+<!--</td>-->
+<!--</tr>-->
+<!--#end-->
+<!--#end-->
+<!--</table>-->
+<!--#end-->
+<!--</div>-->
+
+
 
 
