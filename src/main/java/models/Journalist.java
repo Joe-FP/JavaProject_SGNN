@@ -79,13 +79,13 @@ public class Journalist {
     }
 
 
-    public double averageRating(){
-        for( Article article : this.articles){
-            this.rating = this.rating + (article.getRating());
-        }
-        double avgRating = this.rating / this.articles.size();
-        setRating(avgRating);
-        return avgRating;
-    }
+//    public double averageRating(){
+//        for( Article article : this.articles){
+//            this.rating = this.rating + (article.getRating());
+//        }
+//        double avgRating = this.rating / this.articles.size();
+//        setRating(avgRating);
+//        return avgRating;
+//    }
 
 }
