@@ -28,7 +28,6 @@ public class Rating {
         this.id = id;
     }
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="article_id", nullable=false)
     public Article getArticle() {
@@ -38,7 +37,6 @@ public class Rating {
     public void setArticle(Article article) {
         this.article = article;
     }
-
 
     @Column(name = "rating")
     public int getRating() {

@@ -17,14 +17,11 @@
     <img src="$article.getImagePath()" alt="article image">
     </div>
     <p>$article.getFullArticle()</p>
-
-    <p>Average Rating: $article.averageRating()</p>
-
+    <p>Article Rating: $article.averageRating()</p>
     <p>Article Views: $article.getArticleHits()</p>
     <p>Published by
     <a href="/journalists/$article.getJournalist().getId()">$article.getJournalist().getName()</a>
     </p>
-
 
     <div class="rating">
     <form action ="/articles/$article.getId()/rating" method="post">
@@ -33,22 +30,15 @@
         <input type="radio" name="rating" value="3">
         <input type="radio" name="rating" value="4">
         <input type="radio" name="rating" value="5">
-
         <input type="submit" value="Submit Rating">
-
-
-
     </form>
-</div>
 
+<!--</div>-->
     <!--<div class="rating">-->
         <!--<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>-->
         <!--<input type="submit" value="Rate">-->
     <!--</div>-->
-
-
-
-</div>
+<!--</div>-->
 
 <div class="right">
 

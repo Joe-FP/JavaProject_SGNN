@@ -14,8 +14,6 @@ public class Journalist {
     private int id;
     private String name;
     private List<Article> articles;
-    // Journalist rating is the average of all article ratings by the journalist.
-    private double rating;
     private JournalismType journalismType;
 
     public Journalist() {
@@ -24,7 +22,6 @@ public class Journalist {
     public Journalist(String name, JournalismType journalismType) {
         this.name = name;
         this.journalismType = journalismType;
-        this.rating = 0;
         this.articles = new ArrayList<Article>();
     }
 
@@ -62,13 +59,6 @@ public class Journalist {
         this.articles.add(article);
     }
 
-    @Column(name = "rating")
-    public double getRating() { return rating; }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
     @Column(name ="journalismType")
     public JournalismType getJournalismType() {
         return journalismType;
@@ -77,15 +67,5 @@ public class Journalist {
     public void setJournalismType(JournalismType journalismType) {
         this.journalismType = journalismType;
     }
-
-
-//    public double averageRating(){
-//        for( Article article : this.articles){
-//            this.rating = this.rating + (article.getRating());
-//        }
-//        double avgRating = this.rating / this.articles.size();
-//        setRating(avgRating);
-//        return avgRating;
-//    }
 
 }

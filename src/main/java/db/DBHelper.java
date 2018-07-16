@@ -28,6 +28,34 @@ public class DBHelper {
         }
     }
 
+    public static void delete(Object object) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            session.delete(object);
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    public static <T> List<T> getAll(Class classType) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Criteria cr = session.createCriteria(classType);
+        cr.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
+        return getList(cr);
+    }
+
+    public static <T> T find(int id, Class classType) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Criteria cr = session.createCriteria(classType);
+        cr.add(Restrictions.eq("id", id));
+        return getUnique(cr);
+    }
+
     public static <T> List<T> getList(Criteria criteria) {
         List<T> results = null;
         try {
@@ -78,36 +106,6 @@ public class DBHelper {
         }
     }
 
-
-    public static void delete(Object object) {
-        session = HibernateUtil.getSessionFactory().openSession();
-        try {
-            transaction = session.beginTransaction();
-            session.delete(object);
-            transaction.commit();
-        } catch (HibernateException e) {
-            transaction.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-    }
-
-    public static <T> List<T> getAll(Class classType) {
-        session = HibernateUtil.getSessionFactory().openSession();
-        Criteria cr = session.createCriteria(classType);
-        cr.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
-        return getList(cr);
-    }
-
-    public static <T> T find(int id, Class classType) {
-        session = HibernateUtil.getSessionFactory().openSession();
-        Criteria cr = session.createCriteria(classType);
-        cr.add(Restrictions.eq("id", id));
-        return getUnique(cr);
-
-    }
-
     public static List<Article> getAllArticlesWrittenByJournalist(Journalist journalist){
         session = HibernateUtil.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(Article.class);
@@ -115,8 +113,7 @@ public class DBHelper {
         return getList(criteria);
     }
 
-    //Method to order the articles by hits
-
+    // Order the articles by hits (views)
     public static List<Article> orderByArticleHits() {
         session = HibernateUtil.getSessionFactory().openSession();
         List<Article> articles = null;
@@ -132,8 +129,7 @@ public class DBHelper {
         return articles;
     }
 
-    //Method to order articles by their published date
-
+    // Order articles by publish date
     public static List<Article> orderByPublishDate() {
         session = HibernateUtil.getSessionFactory().openSession();
         List<Article> articles = null;
@@ -149,8 +145,7 @@ public class DBHelper {
         return articles;
     }
 
-    // Method to use the search bar
-
+    // Return articles whose title contains searchTerm
     public static List<Article> articlesBySearchTerm(String searchTerm) {
         session = HibernateUtil.getSessionFactory().openSession();
         List<Article> results = null;

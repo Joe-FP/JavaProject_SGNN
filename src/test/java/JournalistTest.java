@@ -18,32 +18,16 @@ public class JournalistTest {
   Journalist journalist;
   Article article;
 
-//  @Before
-//  public void setUp() throws Exception {
-//    journalist = new Journalist("Ron Burgundy", JournalismType.Broadcast);
-//
-//    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//    Date date;
-//
-//    try {
-//      date = simpleDateFormat.parse("2012-12-24");
-//    } catch (ParseException e) {
-//      date = null;
-//      e.printStackTrace();
-//    }
-//
-//    article = new Article(journalist, "title", date, CategoryType.Tech, "location.jpg", "summary", "full article");
-//    article.setRating(5);
-//    journalist.addArticle(article);
-//  }
-//
-//  @Test
-//  public void checkCanAddArticle() {
-//    assertEquals(1, journalist.getArticles().size());
-//  }
-//
-//  @Test
-//  public void getAverageRating() {
-//    assertEquals(5, journalist.averageRating(), 0.1);
-//  }
+  @Before
+  public void setUp() throws Exception {
+    journalist = new Journalist("Ron Burgundy", JournalismType.Broadcast);
+    article = new Article(journalist, "title", "2018-08-01", CategoryType.Tech, "location.jpg", "summary", "full article");
+    journalist.addArticle(article);
+  }
+
+  @Test
+  public void checkCanAddArticle() {
+    assertEquals(1, journalist.getArticles().size());
+  }
+
 }
