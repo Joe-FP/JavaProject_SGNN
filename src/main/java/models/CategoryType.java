@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Random;
+
 public enum CategoryType {
 
     Weather,
@@ -12,4 +14,10 @@ public enum CategoryType {
     Politics,
     Health,
     Education;
+
+    public static CategoryType getRandomType() {
+        Random random = new Random();
+        return values()[random.nextInt(values().length)];
+    }
+
 }

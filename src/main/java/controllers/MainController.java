@@ -1,6 +1,7 @@
 package controllers;
 
 import db.Seeds;
+import db.Test;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -14,7 +15,7 @@ public class MainController {
 
     public static void main(String[] args) {
 
-        Seeds.seedData();
+        Test.seedData();
         staticFileLocation("/public");
         JournalistController journalistController = new JournalistController();
         ArticleController articleController = new ArticleController();
