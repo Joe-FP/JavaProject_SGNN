@@ -15,17 +15,13 @@ public class MainController {
     public static void main(String[] args) {
 
         Seeds.seedData();
-
         staticFileLocation("/public");
-
         JournalistController journalistController = new JournalistController();
         ArticleController articleController = new ArticleController();
 
         get("/", (req, res) -> {
             HashMap<String, Object> model = new HashMap();
-
             model.put("template", "templates/index.vtl");
-
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
     }

@@ -28,78 +28,47 @@ public class ArticleController {
 
         // display all articles
         get("/articles", (req, res) ->{
-            HashMap<String, Object> model = new HashMap<>();
             List<Article> articles = DBHelper.getAll(Article.class);
-
-            // Only add categories which contain articles.
             ArrayList<String> categories = new ArrayList<>();
-            for (Article article : articles) {
-                if(categories.contains(article.getCategoryType().name())){
-                    //do nothing
-                }else{
-                    categories.add(article.getCategoryType().name());
-                }
-            }
-
+            categories = Support.getActiveCategories(articles);
+            // Put variables into model.
+            HashMap<String, Object> model = new HashMap<>();
             model.put("categories", categories);
             model.put("articles", articles);
             model.put("template", "templates/articles/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
-
 
         // display all articles - ordered by date
         get("/articles/bydate", (req, res) ->{
-            HashMap<String, Object> model = new HashMap<>();
             List<Article> articles = DBHelper.orderByPublishDate();
-
             ArrayList<String> categories = new ArrayList<>();
-            for (Article article : articles) {
-                if(categories.contains(article.getCategoryType().name())){
-                    //do nothing
-                }else{
-                    categories.add(article.getCategoryType().name());
-                }
-            }
-
+            categories = Support.getActiveCategories(articles);
+            HashMap<String, Object> model = new HashMap<>();
             model.put("categories", categories);
             model.put("articles", articles);
             model.put("template", "templates/articles/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
-
 
         // display all articles - ordered by hits (article views)
         get("/articles/byhits", (req, res) ->{
-            HashMap<String, Object> model = new HashMap<>();
             List<Article> articles = DBHelper.orderByArticleHits();
-
             ArrayList<String> categories = new ArrayList<>();
-            for (Article article : articles) {
-                if(categories.contains(article.getCategoryType().name())){
-                    //do nothing
-                }else{
-                    categories.add(article.getCategoryType().name());
-                }
-            }
-
+            categories = Support.getActiveCategories(articles);
+            HashMap<String, Object> model = new HashMap<>();
             model.put("categories", categories);
             model.put("articles", articles);
             model.put("template", "templates/articles/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
-
         // display page to create a new article
         get("/articles/new", (req, res) ->{
-            HashMap<String, Object> model = new HashMap<>();
             List<Journalist> allJournalists = DBHelper.getAll(Journalist.class);
-
             ArrayList<String> categories = new ArrayList<>();
-            for (CategoryType cat : CategoryType.values()) {
-                categories.add(cat.name());
-            }
-
+            categories = Support.getAllCategories();
+            HashMap<String, Object> model = new HashMap<>();
             model.put("categories", categories);
             model.put("allJournalists", allJournalists);
             model.put("template", "templates/articles/create.vtl");
@@ -109,16 +78,12 @@ public class ArticleController {
 
         // display page to edit existing article
         get("articles/:id/edit", (req, res) ->{
-            HashMap<String, Object> model = new HashMap<>();
             int id = Integer.parseInt(req.params(":id"));
             Article article = DBHelper.find(id, Article.class);
             List<Journalist> journalists = DBHelper.getAll(Journalist.class);
-
             ArrayList<String> categories = new ArrayList<>();
-            for (CategoryType cat : CategoryType.values()) {
-                categories.add(cat.name());
-            }
-
+            categories = Support.getAllCategories();
+            HashMap<String, Object> model = new HashMap<>();
             model.put("article", article);
             model.put("journalists", journalists);
             model.put("categories", categories);
@@ -137,20 +102,8 @@ public class ArticleController {
             String summary = req.queryParams("summary");
             String fullArticle = req.queryParams("fullArticle");
             int journalist_id = Integer.parseInt(req.queryParams("journalist_id"));
-
-            SimpleDateFormat parser = new SimpleDateFormat("yyyy-mm-dd");
-            Date date;
-            try {
-                date = parser.parse(publishDate);
-            } catch (ParseException e) {
-                date = null;
-                e.printStackTrace();
-            }
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-            String formattedDate = formatter.format(date);
-
             Journalist journalist = DBHelper.find(journalist_id, Journalist.class);
-            Article article = new Article(journalist, title, formattedDate, category, imagePath, summary, fullArticle);
+            Article article = new Article(journalist, title, publishDate, category, imagePath, summary, fullArticle);
             DBHelper.save(article);
             res.redirect("/articles");
             return null;
@@ -172,21 +125,9 @@ public class ArticleController {
             String articleSummary = req.queryParams("articleSummary");
             String fullArticle = req.queryParams("fullArticle");
             String imagePath = req.queryParams("imagePath");
-
-            SimpleDateFormat parser = new SimpleDateFormat("yyyy-mm-dd");
-            Date date;
-            try {
-                date = parser.parse(publishD);
-            } catch (ParseException e) {
-                date = null;
-                e.printStackTrace();
-            }
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-            String formattedDate = formatter.format(date);
-
             article.setJournalist(journalist);
             article.setTitle(title);
-            article.setPublishD(formattedDate);
+            article.setPublishD(publishD);
             article.setCategoryType(category);
             article.setArticleSummary(articleSummary);
             article.setFullArticle(fullArticle);
@@ -236,15 +177,9 @@ public class ArticleController {
         post("/search", (req, res) -> {
             String searchTerm = req.queryParams("search");
             List<Article> articles = DBHelper.articlesBySearchTerm(searchTerm);
-            HashMap<String, Object> model = new HashMap<>();
             ArrayList<String> categories = new ArrayList<>();
-            for (Article article : articles) {
-                if(categories.contains(article.getCategoryType().name())){
-                    //do nothing
-                }else{
-                    categories.add(article.getCategoryType().name());
-                }
-            }
+            categories = Support.getActiveCategories(articles);
+            HashMap<String, Object> model = new HashMap<>();
             model.put("categories", categories);
             model.put("articles", articles);
             model.put("template", "templates/search/index.vtl");
@@ -257,12 +192,10 @@ public class ArticleController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Article article = DBHelper.find(intId, Article.class);
-
             String ratingStr = req.queryParams("rating");
             int ratingInt = Integer.parseInt(ratingStr);
             Rating rating = new Rating(article, ratingInt);
             DBHelper.save(rating);
-
 //            article.setRating(article.getRating() + );
 //            DBHelper.save(article);
             res.redirect("/articles/" + strId);
