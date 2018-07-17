@@ -10,30 +10,39 @@
 
 
 
-<div class="article_section" ">
+<div class="article_section" style="border:solid 2px red;">
 
     #foreach ($category in $categories)
 
-<div>
+<div style="border: solid 2px orange;">
+    <div class="article-view-header">
     <h2>$category</h2>
-<div>
+    </div>
+
+    <div style="border: solid 2px blue; display: flex;">
     #foreach($article in $articles)
     #if ($article.getCategoryType() == $category)
-    <div class= "article-index">
-        <a href="/articles/$article.getId()" ><img class="article-index-images" src="$article.getImagePath()"
-            alt="article image"></a>
-    <div>
-        <p>$article.getTitle()</p>
-    </div>
-        <div>
-            <p>$article.getArticleSummary()</p>
+
+        <div class= "polaroid" style="border: solid 2px black; display: block;">
+        <div style="border: solid 2px black;">
+        <a href="/articles/$article.getId()" ><img src="$article.getImagePath()" alt="article image"></a>
         </div>
-        <br>
+
+        <div class="polaroid-article-header" style="border: solid 2px palegreen;">
+        <p class="">$article.getTitle()</p>
+        </div>
+
+        <div class="polaroid-article-summary" style="border: solid 2px purple;">
+        <p>$article.getArticleSummary()</p>
+        </div>
+
     </div>
+
     #end
     #end
-#end
+    
 </div>
+    #end
 </div>
 </div>
 
