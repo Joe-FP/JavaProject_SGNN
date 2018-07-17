@@ -1,106 +1,36 @@
 <h1>Search results</h1>
 
-
 <div>
-    <div>
+    #if ($articles.size() == 0)
+        <h2>No results found</h2>
+    #else
         #foreach ($category in $categories)
-    </div>
-    <div>
-        <h2>$category</h2>
-        <div>
-            #foreach($article in $articles)
-            #if ($article.getCategoryType() == $category)
-            <div class= "article-index">
-                <a href="/articles/$article.getId()" ><img src="$article.getImagePath()" alt="article image"
-                                                           style="width: 20%; height: 20%;"></a>
-                <div>
-                    <p>$article.getTitle()</p>
-                </div>
-                <div>
-                    <p>$article.getArticleSummary()</p>
-                </div>
-            </div>
-            #end
-            #end
-            #end
-        </div>
-    </div>
+            <h2>$category</h2>
+            <table>
+                #foreach ($article in $articles)
+                    #if ($article.getCategoryType() == $category)
+                        <tr>
+                            <td>$article.getTitle()</td>
+                            <td>$article.getJournalist().getName()</td>
+                            <td>$article.getPublishD()</td>
+                            <td>$article.getArticleSummary()</td>
+                            <td>$article.getImagePath()</td>
+                            <td>$article.averageRating()</td>
+                            <td>$article.getArticleHits()</td>
+                            <td>
+                                <form action="/articles/$article.getId()/view" method="post">
+                                    <input type="submit" value="View"/>
+                                </form>
+                            </td>
+                        </tr>
+                    #end
+                #end
+            </table>
+        #end
+    #end
 </div>
 
-<!--<div>-->
-
-    <!--#foreach ($category in $categories)-->
-
-    <!--<h2>$category</h2>-->
-    <!--<table>-->
-        <!--<tr>-->
-            <!--<th>Title</th>-->
-            <!--<th>Journalist</th>-->
-            <!--<th>Publish Date</th>-->
-            <!--<th>Summary</th>-->
-            <!--<th>Image</th>-->
-            <!--<th>Rating</th>-->
-            <!--<th>Hits</th>-->
-        <!--</tr>-->
-
-
-        <!--#foreach ($article in $articles)-->
-        <!--#if ($article.getCategoryType() == $category)-->
-
-        <!--<tr>-->
-            <!--<td>$article.getTitle()</td>-->
-            <!--<td>$article.getJournalist().getName()</td>-->
-            <!--<td>$article.getPublishD()</td>-->
-            <!--<td>$article.getArticleSummary()</td>-->
-            <!--<td>$article.getImagePath()</td>-->
-            <!--<td>$article.averageRating()</td>-->
-            <!--<td>$article.getArticleHits()</td>-->
-            <!--<td>-->
-                <!--<form action="/articles/$article.getId()/view" method="post">-->
-                    <!--<input type="submit" value="View"/>-->
-                <!--</form>-->
-            <!--</td>-->
-        <!--</tr>-->
-
-        <!--#end-->
-        <!--#end-->
-
-
-    <!--</table>-->
-
-    <!--#end-->
-
-<!--</div>-->
 
 
 
-<!--<div>-->
-<!--<table>-->
-<!--<tr>-->
-<!--<th>Title</th>-->
-<!--<th>Journalist</th>-->
-<!--<th>Publish Date</th>-->
-<!--<th>Category</th>-->
-<!--<th>Summary</th>-->
-<!--<th>Image</th>-->
-<!--<th>Rating</th>-->
-<!--</tr>-->
-<!--#foreach ($article in $articles)-->
-<!--<tr>-->
-<!--<td>$article.getTitle()</td>-->
-<!--<td>$article.getJournalist().getName()</td>-->
-<!--<td>$article.getPublishD()</td>-->
-<!--<td>$article.getCategoryType()</td>-->
-<!--<td>$article.getArticleSummary()</td>-->
-<!--<td>$article.getImagePath()</td>-->
-<!--<td>$article.getRating()</td>-->
-<!--<td>-->
-<!--<form action="/articles/$article.getId()" method="get">-->
-<!--<input type="submit" value="View"/>-->
-<!--</form>-->
-<!--</td>-->
-<!--</tr>-->
-<!--#end-->
-<!--</table>-->
 
-<!--</div>-->
