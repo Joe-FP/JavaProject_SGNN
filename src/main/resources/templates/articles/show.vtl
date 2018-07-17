@@ -47,11 +47,12 @@
 
 <div class="right">
 
-    <div class ="buttons">
-        <a href="/articles/$article.getId()/edit">Edit</a>
-
+    <div>
+        <a href="/articles/$article.getId()/edit" class="journalist-view">Edit</a>
+    </div>
+    <div>
         <form action="/articles/$article.getId()/delete" method="post">
-            <input type="submit" value="Delete">
+            <input type="submit" value="Delete" class="journalist-view">
         </form>
     </div>
 

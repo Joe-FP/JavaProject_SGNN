@@ -51,7 +51,6 @@ public class Seeds {
         DBHelper.save(article12);
 
 
-
         Rating article1Review1 = new Rating(article1, 5);
         Rating article1Review2 = new Rating(article1, 4);
         Rating article1Review3 = new Rating(article1, 3);

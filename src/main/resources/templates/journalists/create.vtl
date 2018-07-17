@@ -1,6 +1,6 @@
 <h1>Add a new Journalist</h1>
 
-<div class ="article_section">
+<div class ="new-journalist">
     <form action="/journalists" method="post">
         <table>
 
@@ -12,25 +12,27 @@
 
             <tr>
                 <td>Name:</td>
-                <td><input type="text" class="inputBox" name="name" required="true" id="name"></td>
+                <td><input type="text" class="inputBox" name="name" required="true" id="name" style="margin: 20px;"></td>
                 <td></td>
             </tr>
 
             <tr>
                 <td>Type:</td>
                 <td>
+                    <div class="styled-select black rounded" style="margin: 20px;">
                     <select id="category" name ="category">
                         #foreach ( $category in $categories )
                         <option value="$category">$category</option>
                         #end
                     </select>
+                </div>
                 </td>
                 <td></td>
             </tr>
 
             <tr>
                 <td></td>
-                <td><input type="submit" value="Save" class="button"></td>
+                <td><input type="submit" value="Save" class="journalist-view"></td>
                 <td></td>
             </tr>
 
