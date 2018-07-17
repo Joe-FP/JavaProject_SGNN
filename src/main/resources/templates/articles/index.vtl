@@ -8,29 +8,36 @@
 
 
 
-<div class="article_section" style="border:solid 2px red;">
+<div class="article_section">
+    <!--style="border:solid 2px red;"-->
 
     #foreach ($category in $categories)
 
-<div style="border: solid 2px orange;">
+<div>
+    <!--style="border: solid 2px orange;"-->
     <div class="article-view-header">
     <h2>$category</h2>
     </div>
 
-    <div class="polaroid-container" style="border: solid 2px blue;">
+    <div class="polaroid-container">
+        <!--style="border: solid 2px blue;"-->
     #foreach($article in $articles)
     #if ($article.getCategoryType() == $category)
 
-        <div class= "polaroid" style="border: solid 2px black; display: block; margin:0.5%;">
-        <div class=polaroid-image" style="border: solid 2px black;">
+        <div class= "polaroid" style="display: block; margin:0.5%;">
+            <!--border: solid 2px black;-->
+        <div class=polaroid-image">
+            <!--style="border: solid 2px black;"-->
         <a href="/articles/$article.getId()" ><img src="$article.getImagePath()" alt="article image"></a>
         </div>
 
-        <div class="polaroid-article-header" style="border: solid 2px palegreen;">
+        <div class="polaroid-article-header">
+            <!--style="border: solid 2px palegreen;"-->
         <p class="">$article.getTitle()</p>
         </div>
 
-        <div class="polaroid-article-summary" style="border: solid 2px purple;">
+        <div class="polaroid-article-summary">
+            <!--style="border: solid 2px purple;"-->
         <p>$article.getArticleSummary()</p>
         </div>
 
