@@ -1,34 +1,84 @@
 <h1>Search results</h1>
 
-<div>
+<div class="article_section">
+    <!--style="border:solid 2px red;"-->
+
     #if ($articles.size() == 0)
+
         <h2>No results found</h2>
+
     #else
+
         #foreach ($category in $categories)
-            <h2>$category</h2>
-            <table>
-                #foreach ($article in $articles)
-                    #if ($article.getCategoryType() == $category)
-                        <tr>
-                            <td>$article.getTitle()</td>
-                            <td>$article.getJournalist().getName()</td>
-                            <td>$article.getPublishD()</td>
-                            <td>$article.getArticleSummary()</td>
-                            <td>$article.getImagePath()</td>
-                            <td>$article.averageRating()</td>
-                            <td>$article.getArticleHits()</td>
-                            <td>
-                                <form action="/articles/$article.getId()/view" method="post">
-                                    <input type="submit" value="View"/>
-                                </form>
-                            </td>
-                        </tr>
+
+            <div>
+                <!--style="border: solid 2px orange;"-->
+                <div class="article-view-header">
+                    <h2>$category</h2>
+                </div>
+
+                <div class="polaroid-container">
+                    <!--style="border: solid 2px blue;"-->
+                    #foreach($article in $articles)
+                        #if ($article.getCategoryType() == $category)
+                            <div class= "polaroid" style="display: block; margin:0.5%;">
+                                <!--border: solid 2px black;-->
+                                <div class=polaroid-image">
+                                    <!--style="border: solid 2px black;"-->
+                                    <a href="/articles/$article.getId()" ><img src="$article.getImagePath()" alt="article image"></a>
+                                </div>
+
+                                <div class="polaroid-article-header">
+                                    <!--style="border: solid 2px palegreen;"-->
+                                    <p class="">$article.getTitle()</p>
+                                </div>
+
+                                <div class="polaroid-article-summary">
+                                    <!--style="border: solid 2px purple;"-->
+                                    <p>$article.getArticleSummary()</p>
+                                </div>
+                            </div>
+                        #end
                     #end
-                #end
-            </table>
+
+                </div>
+            </div>
+
         #end
+
     #end
 </div>
+
+
+<!--<div>-->
+    <!--#if ($articles.size() == 0)-->
+        <!--<h2>No results found</h2>-->
+    <!--#else-->
+        <!--#foreach ($category in $categories)-->
+            <!--<h2>$category</h2>-->
+            <!--<table>-->
+                <!--#foreach ($article in $articles)-->
+                    <!--#if ($article.getCategoryType() == $category)-->
+                        <!--<tr>-->
+                            <!--<td>$article.getTitle()</td>-->
+                            <!--<td>$article.getJournalist().getName()</td>-->
+                            <!--<td>$article.getPublishD()</td>-->
+                            <!--<td>$article.getArticleSummary()</td>-->
+                            <!--<td>$article.getImagePath()</td>-->
+                            <!--<td>$article.averageRating()</td>-->
+                            <!--<td>$article.getArticleHits()</td>-->
+                            <!--<td>-->
+                                <!--<form action="/articles/$article.getId()/view" method="post">-->
+                                    <!--<input type="submit" value="View"/>-->
+                                <!--</form>-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                    <!--#end-->
+                <!--#end-->
+            <!--</table>-->
+        <!--#end-->
+    <!--#end-->
+<!--</div>-->
 
 
 
