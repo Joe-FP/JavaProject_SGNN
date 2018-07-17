@@ -13,7 +13,7 @@ public class Test {
         DBHelper.deleteAll(Article.class);
         DBHelper.deleteAll(Journalist.class);
 
-        for (int i = 0; i <= 100; i++){
+        for (int i = 0; i <= 18; i++){
             Article article = new Article(getRandomJournalist(), getRandomTitle(), getRandomDate(), CategoryType.getRandomType(), getRandomImagePath(), "This is summary test.", "This is the full article");
             DBHelper.save(article);
         }

@@ -15,7 +15,7 @@ public class MainController {
 
     public static void main(String[] args) {
 
-        Test.seedData();
+        Seeds.seedData();
         staticFileLocation("/public");
         JournalistController journalistController = new JournalistController();
         ArticleController articleController = new ArticleController();
