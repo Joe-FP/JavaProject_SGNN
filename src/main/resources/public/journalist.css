@@ -66,5 +66,9 @@
 /* -------------------- Colors: Text */
 .black select   { color: #1E1D1D; }
 
+.journalist-buttons{
+    display: flex;
+}
+
 
 
