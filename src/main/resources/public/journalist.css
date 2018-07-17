@@ -22,3 +22,49 @@
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
+
+.journalist-navigation{
+    /*border: 2px dotted red;*/
+    text-align: center;
+}
+
+.journalist-links{
+    margin: auto;
+}
+
+.journalist-links:link, .journalist-links:visited {
+    background-color: #F2F2F2;
+    color: black;
+    border: 2px solid #1E1D1D;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/*!*This was for the dropdown menu on the create a new journalist page*!*/
+.styled-select select {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    height: 29px;
+    padding: 5px; /* If you add too much padding here, the options won't show in IE */
+    width: 268px;
+}
+
+/* -------------------- Rounded Corners */
+.rounded {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+
+/* -------------------- Colors: Background */
+.black   { background-color: #E0E0E0; }
+
+/* -------------------- Colors: Text */
+.black select   { color: #1E1D1D; }
+
+
+
