@@ -152,15 +152,16 @@ public class DBHelper {
         try {
             Criteria cr = session.createCriteria(Article.class);
             cr.add(Restrictions.ilike("title", "%" + searchTerm + "%"));
+
+            cr.addOrder(Order.asc("publishD"));
+
             results = cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        if (results.size() > 0) {
-            return results;}
-        else return null;
+            return results;
     }
 
 
