@@ -1,11 +1,9 @@
 <h1>All Articles</h1>
 
-<div>
-    <a href="/articles/new" class="button center">New Article</a>
-    <p></p>
-    <a href="/articles/bydate" class="button center">Order by date</a>
-    <p></p>
-    <a href="/articles/byhits" class="button center">Order by views</a>
+<div class="article-navigation">
+    <a href="/articles/new" class="article-links">New Article</a>
+    <a href="/articles/bydate" class="article-links">Order by date</a>
+    <a href="/articles/byhits" class="article-links">Order by views</a>
 </div>
 
 
@@ -19,12 +17,12 @@
     <h2>$category</h2>
     </div>
 
-    <div style="border: solid 2px blue; display: flex;">
+    <div class="polaroid-container" style="border: solid 2px blue;">
     #foreach($article in $articles)
     #if ($article.getCategoryType() == $category)
 
-        <div class= "polaroid" style="border: solid 2px black; display: block;">
-        <div style="border: solid 2px black;">
+        <div class= "polaroid" style="border: solid 2px black; display: block; margin:0.5%;">
+        <div class=polaroid-image" style="border: solid 2px black;">
         <a href="/articles/$article.getId()" ><img src="$article.getImagePath()" alt="article image"></a>
         </div>
 
