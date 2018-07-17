@@ -73,6 +73,7 @@ width: 49%;
 
 div.polaroid-container{
     display: flex;
+    flex-wrap: wrap;
 }
 
 
@@ -84,7 +85,8 @@ div.polaroid {
     /*margin-bottom: 25px;*/
     text-align: center;
     /*display: flex;*/
-
+    flex-grow: 1;
+    flex: 1 0 20%;
 }
 
 div.polaroid-article-header {
