@@ -16,8 +16,13 @@
     <div class="article-image">
     <img src="$article.getImagePath()" alt="article image">
     </div>
+
+    <div class="article-article">
     <p>$article.getFullArticle()</p>
-    <p>Article Rating: $article.averageRating()</p>
+    </div>
+
+    <p>Average Rating: $article.averageRating()</p>
+
     <p>Article Views: $article.getArticleHits()</p>
     <p>Published by
     <a href="/journalists/$article.getJournalist().getId()">$article.getJournalist().getName()</a>

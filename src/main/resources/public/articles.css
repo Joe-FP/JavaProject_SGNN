@@ -13,14 +13,19 @@
 }
 
 .article-image img{
-    width: 70%;
-    height: 70%;
-    margin-left: 15%
+    width: 60%;
+    height: 60%;
+    margin-left: 20%
 }
 
 .article_section img{
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: auto;
+
+}
+
+.article_section{
+    margin-left: 2.5%;
 }
 
 .article-header{
@@ -28,9 +33,40 @@
     margin-left: 0.5em;
 }
 
+.article-article{
+    font-size: 1em;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.article-index{
+float:left;
+width: 49%
+}
+
+
+div.polaroid {
+    width: 30%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    text-align: center;
+    display: flex;
+}
+
+div.polaroid-article-header {
+    text-align: center;
+    padding: 10px 20px;
+}
+
+
+
 @media screen and (max-width: 600px) {
     .article-header  {
         font-size: 1em;
+    }
+    .article-index-images{
+
     }
 }
 

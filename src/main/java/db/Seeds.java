@@ -51,5 +51,43 @@ public class Seeds {
         DBHelper.save(article12);
 
 
+
+        Rating article1Review1 = new Rating(article1, 5);
+        Rating article1Review2 = new Rating(article1, 4);
+        Rating article1Review3 = new Rating(article1, 3);
+        DBHelper.save(article1Review1);
+        DBHelper.save(article1Review2);
+        DBHelper.save(article1Review3);
+
+        Rating article2Review1 = new Rating(article2, 5);
+        Rating article2Review2 = new Rating(article2, 2);
+        Rating article2Review3 = new Rating(article2, 0);
+        DBHelper.save(article2Review1);
+        DBHelper.save(article2Review2);
+        DBHelper.save(article2Review3);
+
+        Rating article3Review1 = new Rating(article3, 2);
+        Rating article3Review2 = new Rating(article3, 5);
+        Rating article3Review3 = new Rating(article3, 2);
+        DBHelper.save(article3Review1);
+        DBHelper.save(article3Review2);
+        DBHelper.save(article3Review3);
+
+        Rating article4Review1 = new Rating(article4, 0);
+        Rating article4Review2 = new Rating(article4, 0);
+        Rating article4Review3 = new Rating(article4, 2);
+        DBHelper.save(article4Review1);
+        DBHelper.save(article4Review2);
+        DBHelper.save(article4Review3);
+
+        Rating article5Review1 = new Rating(article5, 0);
+        Rating article5Review2 = new Rating(article5, 0);
+        Rating article5Review3 = new Rating(article5, 2);
+        DBHelper.save(article5Review1);
+        DBHelper.save(article5Review2);
+        DBHelper.save(article5Review3);
+
+
+
     }
 }
