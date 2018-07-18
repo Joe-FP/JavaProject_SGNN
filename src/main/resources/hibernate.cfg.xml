@@ -17,6 +17,8 @@
         <mapping class = "models.News"/>
         <mapping class = "models.Journalist"/>
         <mapping class = "models.Article"/>
+        <mapping class = "models.Rating"/>
+
 
     </session-factory>
 </hibernate-configuration>

@@ -1,0 +1,84 @@
+<h1>Add a new Article</h1>
+
+    <div class ="article_section">
+        <form action="/articles"method="post">
+            <table>
+
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td>Journalist:</td>
+                <td>
+                    <select id="journalist_id" name ="journalist_id">
+                        #foreach ( $journalist in $allJournalists )
+                        <option value="$journalist.getId()">$journalist.getName()</option>
+                        #end
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Title:</td>
+                <td><input type="text" class="inputBox" name="title" required="true" id="title"></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Date:</td>
+                <td><input type="date" class="inputBox" name="publishD" required="true" id="publishD"></td>
+                <!--<td><input type="text" class="inputBox" name="publishD" required="true" id="publishD"></td>-->
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Category:</td>
+                <td>
+                    <select id="category" name ="category">
+                        #foreach ( $category in $categories )
+                        <option value="$category">$category</option>
+                        #end
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Summary:</td>
+                <td><input type="text" class="inputBox" name="summary" id="summary"></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Article:</td>
+                <td><input type="text" class="inputBox" name="fullArticle" id="fullArticle"></td>
+                <td></td>
+            </tr>
+
+                <tr>
+                    <td>Image:</td>
+                    <td><input type="file" class="inputBox" name="imagePath" id="imagePath" required="true" accept="image/*"></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Save" class="button"></td>
+                    <td></td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+
+
+
+
+
+
+
+

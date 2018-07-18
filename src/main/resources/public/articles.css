@@ -1,0 +1,153 @@
+.heading{
+    overflow: hidden;
+}
+
+.article-navigation{
+    /*border: 2px dotted red;*/
+    text-align: center;
+}
+
+.article-links{
+    margin: auto;
+}
+
+.article-links:link, .article-links:visited {
+    background-color: #F2F2F2;
+    color: black;
+    border: 2px solid #1E1D1D;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.article-delete{
+  background-color: #F2F2F2;
+  color: black;
+  border: 2px solid #1E1D1D;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 2.5%;
+  width: 78px;
+  height: 45px;
+}
+
+edit{
+width: 78px;
+height: 45px;
+margin: 2.5%;
+}
+
+.article-links:hover, .article-links:active {
+    background-color: #726F70;
+    color: white;
+}
+
+.article_date{
+    float:left;
+    margin-left: 0.5em;
+}
+
+.article_type{
+    float:right;
+    margin-right: 0.5em;
+}
+
+.article-image img{
+    width: 60%;
+    height: 60%;
+    margin-left: 20%
+}
+
+.article_section img{
+    width: 100%;
+    height: auto;
+
+}
+
+.article_section{
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 5%;
+}
+
+.article-header{
+    font-size: 2.5em;
+    margin-left: 0.5em;
+}
+
+.article-article{
+    font-size: 1em;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.article-index{
+float:left;
+width: 49%;
+}
+
+
+div.polaroid-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+div.polaroid {
+    width: 30%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:0.5%;
+    /*margin-bottom: 25px;*/
+    text-align: center;
+    /*display: flex;*/
+    flex-grow: 2;
+    flex: 1 0 20%;
+}
+
+div.polaroid-article-header {
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.articles-bottom{
+margin-left:0.5em;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .article-header  {
+        font-size: 1em;
+    }
+    div.polaroid-container{
+        display: block;
+    }
+
+    div.polaroid {
+        width: 100%;
+        text-align: center;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        padding: 2.5%;
+        margin-bottom: 3%;
+        text-align: center;
+        display: block;
+        font-size: small;
+    }
+    div.article-image{
+        margin-left: 5%;
+    }
+
+    .article-links:link{
+        text-decoration: underline;
+        font-size: small;
+    }
+
+    .article-navigation{
+        align-items: center;
+    }
+}
