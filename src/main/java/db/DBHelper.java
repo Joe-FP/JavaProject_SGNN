@@ -109,6 +109,7 @@ public class DBHelper {
     public static List<Article> getAllArticlesWrittenByJournalist(Journalist journalist){
         session = HibernateUtil.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(Article.class);
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         criteria.add(Restrictions.eq("journalist", journalist));
         return getList(criteria);
     }
@@ -119,6 +120,7 @@ public class DBHelper {
         List<Article> articles = null;
         try {
             Criteria cr = session.createCriteria(Article.class);
+            cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             cr.addOrder(Order.desc("articleHits"));
             articles = cr.list();
         } catch (HibernateException e) {
@@ -135,6 +137,7 @@ public class DBHelper {
         List<Article> articles = null;
         try {
             Criteria cr = session.createCriteria(Article.class);
+            cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             cr.addOrder(Order.asc("publishD"));
             articles = cr.list();
         } catch (HibernateException e) {
@@ -151,10 +154,9 @@ public class DBHelper {
         List<Article> results = null;
         try {
             Criteria cr = session.createCriteria(Article.class);
+            cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             cr.add(Restrictions.ilike("title", "%" + searchTerm + "%"));
-
             cr.addOrder(Order.asc("publishD"));
-
             results = cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();
