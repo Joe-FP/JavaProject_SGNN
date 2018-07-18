@@ -11,9 +11,6 @@
     margin: auto;
 }
 
-.buttons  {
-  display: flex;
-}
 .article-links:link, .article-links:visited {
     background-color: #F2F2F2;
     color: black;
@@ -32,9 +29,15 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin: 2.5%;
+  margin-left: 2.5%;
   width: 78px;
   height: 45px;
+}
+
+edit{
+width: 78px;
+height: 45px;
+margin: 2.5%;
 }
 
 .article-links:hover, .article-links:active {
