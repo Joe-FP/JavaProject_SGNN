@@ -18,11 +18,11 @@
 
     </table>
 
-    <div style="display: flex;">
+  <div class="buttons">
         <a href="/journalists/$journalist.getId()/edit" class="journalist-view">Edit</a>
 
-        <form action="/journalists/$journalist.getId()/delete" method="post">
-            <input type="submit" value="Delete" class="journalist-view">
+        <form action="/journalists/$journalist.getId()/delete" method="post" class="article-delete">
+            <input type="submit" value="Delete" class="article-delete">
         </form>
     </div>
 
@@ -37,6 +37,3 @@
     </section>
 
 </div>
-
-
-

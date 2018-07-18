@@ -48,13 +48,13 @@
     </div>
 
 
-    <div class="article-buttons">
+    <div class="buttons">
       <div>
-        <a href="/articles/$article.getId()/edit">Edit</a>
+        <a href="/articles/$article.getId()/edit" class="article-links" style="width: 78px; height: 45px;">Edit</a>
       </div>
       <div>
         <form action="/articles/$article.getId()/delete" method="post">
-          <input type="submit" value="Delete">
+          <input type="submit" value="Delete" class="article-delete">
         </form>
       </div>
     </div>

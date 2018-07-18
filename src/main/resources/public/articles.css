@@ -11,6 +11,9 @@
     margin: auto;
 }
 
+.buttons  {
+  display: flex;
+}
 .article-links:link, .article-links:visited {
     background-color: #F2F2F2;
     color: black;
@@ -19,6 +22,19 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
+}
+
+.article-delete{
+  background-color: #F2F2F2;
+  color: black;
+  border: 2px solid #1E1D1D;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 2.5%;
+  width: 78px;
+  height: 45px;
 }
 
 .article-links:hover, .article-links:active {
@@ -85,13 +101,17 @@ div.polaroid {
     /*margin-bottom: 25px;*/
     text-align: center;
     /*display: flex;*/
-    /* flex-grow: 1; */
-    flex: 2 0 20%;
+    flex-grow: 2;
+    flex: 1 0 20%;
 }
 
 div.polaroid-article-header {
     text-align: center;
     padding: 10px 20px;
+}
+
+.articles-bottom{
+margin-left:0.5em;
 }
 
 
