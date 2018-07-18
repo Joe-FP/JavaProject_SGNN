@@ -104,7 +104,7 @@ div.polaroid {
     /*margin-bottom: 25px;*/
     text-align: center;
     /*display: flex;*/
-    flex-grow: 2;
+    flex-grow: 1;
     flex: 1 0 20%;
 }
 
@@ -115,6 +115,11 @@ div.polaroid-article-header {
 
 .articles-bottom{
 margin-left:0.5em;
+}
+
+img{
+width: 1000px;
+height: 1000px;
 }
 
 
