@@ -1,59 +1,61 @@
 <div class="article-header">
-    <h1>$article.getTitle()</h1>
+  <h1>$article.getTitle()</h1>
 </div>
 
 <div class="article-body">
 
-    <div class ="heading">
-        <div class="heading-date">
-        <p class = "article_date">Published on: $article.getPublishD()</p>
-        </div>
-        <div class="heading-category">
-        <p class="article_type">Category: $article.getCategoryType()</p>
-        </div>
+  <div class ="heading">
+    <div class="heading-date">
+      <p class = "article_date">Published on: $article.getPublishD()</p>
     </div>
+    <div class="heading-category">
+      <p class="article_type">Category: $article.getCategoryType()</p>
+    </div>
+  </div>
 
-    <div class="article-image">
+  <div class="article-image">
     <img src="$article.getImagePath()" alt="article image">
-    </div>
+  </div>
 
-    <div class="article-article">
+  <div class="article-article">
     <p>$article.getFullArticle()</p>
-    </div>
+  </div>
 
-    <p>Average Rating: $article.averageRating()</p>
+
+
+  <div class="articles-bottom">
 
     <p>Article Views: $article.getArticleHits()</p>
+
     <p>Published by
-    <a href="/journalists/$article.getJournalist().getId()">$article.getJournalist().getName()</a>
+      <a href="/journalists/$article.getJournalist().getId()">$article.getJournalist().getName()</a>
     </p>
 
+
     <div class="rating">
-    <form action ="/articles/$article.getId()/rating" method="post">
-        <input type="radio" name="rating" value="5">
-        <input type="radio" name="rating" value="4">
-        <input type="radio" name="rating" value="3">
-        <input type="radio" name="rating" value="2">
-        <input type="radio" name="rating" value="1">
-        <input type="submit" value="Submit Rating">
-    </form>
 
-<!--</div>-->
-    <!--<div class="rating">-->
-        <!--<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>-->
-        <!--<input type="submit" value="Rate">-->
-    <!--</div>-->
-<!--</div>-->
-
-<div class="right">
-
-    <div>
-        <a href="/articles/$article.getId()/edit" class="journalist-view">Edit</a>
-    </div>
-    <div>
-        <form action="/articles/$article.getId()/delete" method="post">
-            <input type="submit" value="Delete" class="journalist-view">
+      <p>Average Rating: $article.averageRating()</p>
+      <div class="rating-form">
+        <form action ="/articles/$article.getId()/rating" method="post">
+          <input type="radio" name="rating" value="1">1
+          <input type="radio" name="rating" value="2">2
+          <input type="radio" name="rating" value="3">3
+          <input type="radio" name="rating" value="4">4
+          <input type="radio" name="rating" value="5">5
+          <input type="submit" value="Submit Rating">
         </form>
+      </div>
     </div>
 
-</div>
+
+    <div class="buttons">
+      <div>
+        <a href="/articles/$article.getId()/edit" class="article-links edit">Edit</a>
+      </div>
+      <div>
+        <form action="/articles/$article.getId()/delete" method="post">
+          <input type="submit" value="Delete" class="article-delete">
+        </form>
+      </div>
+    </div>
+  </div>
