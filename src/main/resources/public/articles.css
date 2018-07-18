@@ -85,8 +85,8 @@ div.polaroid {
     /*margin-bottom: 25px;*/
     text-align: center;
     /*display: flex;*/
-    flex-grow: 1;
-    flex: 1 0 20%;
+    /* flex-grow: 1; */
+    flex: 2 0 20%;
 }
 
 div.polaroid-article-header {
@@ -128,4 +128,3 @@ div.polaroid-article-header {
         align-items: center;
     }
 }
-
