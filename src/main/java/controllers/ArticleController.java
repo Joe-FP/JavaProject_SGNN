@@ -1,9 +1,12 @@
 package controllers;
+
+
 import db.DBHelper;
 import models.Article;
 import models.CategoryType;
 import models.Journalist;
 import models.Rating;
+
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import java.sql.Timestamp;
@@ -13,8 +16,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
 import static spark.Spark.get;
 import static spark.Spark.post;
+
+import static spark.route.HttpMethod.get;
 
 public class ArticleController {
 
