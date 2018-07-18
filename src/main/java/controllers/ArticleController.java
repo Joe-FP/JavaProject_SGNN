@@ -143,20 +143,8 @@ public class ArticleController {
             return null;
         }, velocityTemplateEngine);
 
-
         //
         get("articles/:id", (req, res) ->{
-            int id = Integer.parseInt(req.params(":id"));
-            Article article = DBHelper.find(id, Article.class);
-            HashMap<String, Object> model = new HashMap<>();
-            model.put("article", article);
-            model.put("template", "templates/articles/show.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
-        }, velocityTemplateEngine);
-
-
-        //
-        post("articles/:id/view", (req, res) ->{
             int id = Integer.parseInt(req.params(":id"));
             Article article = DBHelper.find(id, Article.class);
             article.setArticleHits(article.getArticleHits()+1);
@@ -168,6 +156,17 @@ public class ArticleController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
+//        post("articles/:id/view", (req, res) ->{
+//            int id = Integer.parseInt(req.params(":id"));
+//            Article article = DBHelper.find(id, Article.class);
+//            article.setArticleHits(article.getArticleHits()+1);
+//            DBHelper.save(article);
+//            Article articleNew = DBHelper.find(id, Article.class);
+//            HashMap<String, Object> model = new HashMap<>();
+//            model.put("article", articleNew);
+//            model.put("template", "templates/articles/show.vtl");
+//            return new ModelAndView(model, "templates/layout.vtl");
+//        }, velocityTemplateEngine);
 
         //
         post("/articles/:id/delete", (req, res) ->{
@@ -202,8 +201,6 @@ public class ArticleController {
             int ratingInt = Integer.parseInt(ratingStr);
             Rating rating = new Rating(article, ratingInt);
             DBHelper.save(rating);
-//            article.setRating(article.getRating() + );
-//            DBHelper.save(article);
             res.redirect("/articles/" + strId);
             return null;
         }, velocityTemplateEngine);
