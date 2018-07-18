@@ -30,8 +30,9 @@
         <div class ="article_section">
 
             #foreach($article in $articles)
-            <img src="$article.getImagePath()" alt="article image">
             <h3>$article.getTitle()</h3>
+            <img src="$article.getImagePath()" alt="article image">
+
             #end
         </div>
     </section>
