@@ -53,6 +53,7 @@ public class DBHelper {
         session = HibernateUtil.getSessionFactory().openSession();
         Criteria cr = session.createCriteria(classType);
         cr.add(Restrictions.eq("id", id));
+        cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return getUnique(cr);
     }
 
@@ -60,6 +61,7 @@ public class DBHelper {
         List<T> results = null;
         try {
             transaction = session.beginTransaction();
+            criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             results = criteria.list();
             ;
             transaction.commit();

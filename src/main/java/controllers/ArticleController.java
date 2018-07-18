@@ -34,7 +34,7 @@ public class ArticleController {
 
         // display all articles
         get("/articles", (req, res) ->{
-            List<Article> articles = DBHelper.getAll(Article.class);
+            List<Article> articles = DBHelper.orderByPublishDate();
             ArrayList<String> categories = new ArrayList<>();
             categories = Support.getActiveCategories(articles);
             // Put variables into model.
@@ -104,7 +104,7 @@ public class ArticleController {
             String publishDate = req.queryParams("publishD");
             String categoryType = req.queryParams("category");
             CategoryType category = CategoryType.valueOf(categoryType);
-            String imagePath = req.queryParams("imagePath");
+            String imagePath = "/images/article-images/" + req.queryParams("imagePath");
             String summary = req.queryParams("summary");
             String fullArticle = req.queryParams("fullArticle");
             int journalist_id = Integer.parseInt(req.queryParams("journalist_id"));
@@ -137,7 +137,7 @@ public class ArticleController {
             article.setCategoryType(category);
             article.setArticleSummary(articleSummary);
             article.setFullArticle(fullArticle);
-            article.setImagePath(imagePath);
+//            article.setImagePath(imagePath);
             DBHelper.save(article);
             res.redirect("/articles");
             return null;
