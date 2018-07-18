@@ -1,7 +1,11 @@
 package models;
 import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
+
+import static jdk.nashorn.internal.objects.NativeMath.round;
 
 @Entity
 @Table(name ="articles")
@@ -133,7 +137,14 @@ public class Article {
             count += rating.getRating();
         }
         double average = count / ratings.size();
-        return average;
+        return round(average, 1);
+    }
+
+    private static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 
 

@@ -2,9 +2,7 @@ package db;
 
 import models.*;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class Test {
 
@@ -13,9 +11,34 @@ public class Test {
         DBHelper.deleteAll(Article.class);
         DBHelper.deleteAll(Journalist.class);
 
-        for (int i = 0; i <= 100; i++){
-            Article article = new Article(getRandomJournalist(), getRandomTitle(), getRandomDate(), CategoryType.getRandomType(), getRandomImagePath(), "This is summary test.", "This is the full article");
+        HashMap<String, String> titleImage = new HashMap<String, String>();
+        titleImage.put("Military Tracking System Disappears", "1.jpg");
+        titleImage.put("Man Accused of Killing Lawyer Receives New Attorney", "2.png");
+        titleImage.put("Mayor Thomson Speaks to Homeless: Go Home", "3.jpeg");
+        titleImage.put("Homicide Victims Rarely Talk to Police", "4.jpg");
+        titleImage.put("Poison Control Centre Expert Reminds Everyone Not to Take Poison", "5.jpg");
+        titleImage.put("Most Earthquake Damage is Caused by Shaking", "6.jpg");
+        titleImage.put("Federal Agents Raid Gun Shop, Find Weapons", "7.jpg");
+        titleImage.put("Teen Pregnancy Drops Significantly after 25", "8.gif");
+        titleImage.put("Prisons to Replace Easy-Open Locks", "9.jpg");
+        titleImage.put("Body Found in Cemetery", "10.jpeg");
+        titleImage.put("Parents Keep Kids Home to Protest School Closure", "11.jpeg");
+        titleImage.put("17 Remain Dead in Morgue Shooting Spree", "12.JPG");
+        titleImage.put("Threat Disrupts Plans to Meet About Threats", "13.jpg");
+        titleImage.put("Midget Sues Grocer, Sites Belittling Remarks", "14.jpg");
+        titleImage.put("Police Thwarted by Goat Stuck on Roof who 'only respects one man'", "15.jpg");
+        titleImage.put("Diana was still alive hours before she died", "16.gif");
+        titleImage.put("One-Armed Man Applauds the Kindness of Strangers", "17.jpg");
+        titleImage.put("Plane Forced to Land at Airport", "18.jpg");
+        titleImage.put("Police Team Heroically Ends 6 Hour Standoff with Empty Apartment", "19.jpg");
+
+        for (String key : titleImage.keySet()) {
+            String title = key;
+            String imagePath = "/images/article-images/" + titleImage.get(key);
+            Article article = new Article(getRandomJournalist(), title, getRandomDate(), CategoryType.getRandomType(), imagePath, "This is summary test.", "This is the full article");
+            Random d = new Random(); int hits = d.nextInt(250-50) + 50; article.setArticleHits(hits);
             DBHelper.save(article);
+            applyRandomRating(article);
         }
     }
 
@@ -43,31 +66,6 @@ public class Test {
         return journalists.get(t.nextInt(journalists.size()-0) + 0);
     }
 
-    private static String getRandomTitle(){
-        Random t = new Random();
-        List<String> articleTitles = new ArrayList<>();
-        articleTitles.add("Military Tracking System Disappears");
-        articleTitles.add("Man Accused of Killing Lawyer Receives New Attorney");
-        articleTitles.add("Mayor Thomson Speaks to Homeless: Go Home");
-        articleTitles.add("Homicide Victims Rarely Talk to Police");
-        articleTitles.add("Poison Control Centre Expert Reminds Everyone Not to Take Poison");
-        articleTitles.add("Most Earthquake Damage is Caused by Shaking");
-        articleTitles.add("Federal Agents Raid Gun Shop, Find Weapons");
-        articleTitles.add("Teen Pregnancy Drops Significantly after 19");
-        articleTitles.add("Prisons to Replace Easy-Open Locks");
-        articleTitles.add("Body Found in Cemetery");
-        articleTitles.add("Parents Keep Kids Home to Protest School Closure");
-        articleTitles.add("17 Remain Dead in Morgue Shooting Spree");
-        articleTitles.add("Threat Disrupts Plans to Meet About Threats");
-        articleTitles.add("Midget Sues Grocer, Sites Belittling Remarks");
-        articleTitles.add("Police Thwarted by Goat Stuck on Roof who 'only respects one man'");
-        articleTitles.add("Diana was still alive hours before she died");
-        articleTitles.add("One-Armed Man Applauds the Kindness of Strangers");
-        articleTitles.add("Plane Forced to Land at Airport");
-        articleTitles.add("Police Team Heroically Ends 6 Hour Standoff with Empty Apartment");
-        return articleTitles.get(t.nextInt(articleTitles.size()-0) + 0);
-    }
-
     private static String getRandomDate(){
         Random y = new Random();
         Random m = new Random();
@@ -87,18 +85,21 @@ public class Test {
     private static String getRandomImagePath(){
         Random p = new Random();
         List<String> imagePaths = new ArrayList<>();
-        imagePaths.add("/images/1.jpg");
-        imagePaths.add("/images/1.jpg");
-        imagePaths.add("/images/1.jpg");
-        imagePaths.add("/images/1.jpg");
-        imagePaths.add("/images/1.jpg");
-        imagePaths.add("/images/1.jpg");
-        imagePaths.add("/images/1.jpg");
-        imagePaths.add("/images/1.jpg");
-        imagePaths.add("/images/1.jpg");
-        imagePaths.add("/images/1.jpg");
+        imagePaths.add("/images/article-images/6.jpg");
         String path = imagePaths.get(p.nextInt(imagePaths.size()-0) + 0);
         return path;
+    }
+
+    private static void applyRandomRating(Article article){
+        Random r = new Random();
+        Random i = new Random();
+        int numRatings = i.nextInt(150-50) + 50;
+        for (int times = 0; times <= numRatings; times++){
+            int rating = r.nextInt(5-1) + 1;
+            Rating articleRating = new Rating(article, rating);
+            DBHelper.save(articleRating);
+        }
+
     }
 
 }

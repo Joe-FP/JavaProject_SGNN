@@ -1,0 +1,36 @@
+<h1>Search results</h1>
+
+<div>
+    #if ($articles.size() == 0)
+    <h2>No results found</h2>
+    #else
+    #foreach ($category in $categories)
+    <h2>$category</h2>
+    <table>
+        #foreach ($article in $articles)
+        #if ($article.getCategoryType() == $category)
+        <tr>
+            <td>$article.getTitle()</td>
+            <td>$article.getJournalist().getName()</td>
+            <td>$article.getPublishD()</td>
+            <td>$article.getArticleSummary()</td>
+            <td>$article.getImagePath()</td>
+            <td>$article.averageRating()</td>
+            <td>$article.getArticleHits()</td>
+            <td>
+                <form action="/articles/$article.getId()/view" method="post">
+                    <input type="submit" value="View"/>
+                </form>
+            </td>
+        </tr>
+        #end
+        #end
+    </table>
+    #end
+    #end
+</div>
+
+
+
+
+
