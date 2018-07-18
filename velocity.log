@@ -390,3 +390,4 @@
 2018-07-18 12:08:04,791 - ResourceManager : found templates/layout.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
 2018-07-18 12:08:04,794 - ResourceManager : found templates/articles/index.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
 2018-07-18 12:08:04,794 - ResourceManager : found templates/articles/index.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+

@@ -70,5 +70,18 @@
     display: flex;
 }
 
+.journalist-edit{
+}
 
-
+.journalist-delete{
+background-color: #F2F2F2;
+  color: black;
+  border: 2px solid #1E1D1D;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 2.5%;
+  width: 78px;
+  height: 45px;
+}
