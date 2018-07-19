@@ -49,26 +49,26 @@ public class Test {
         titleImage.put("Poison Control Centre Expert Reminds Everyone Not to Take Poison", "5.jpg");
         titleImage.put("Most Earthquake Damage is Caused by Shaking", "6.jpg");
         titleImage.put("Federal Agents Raid Gun Shop, Find Weapons", "7.jpg");
-        titleImage.put("Teen Pregnancy Drops Significantly after 25", "8.gif");
+        titleImage.put("Teen Pregnancy Drops Significantly after 25", "8-1.gif");
         titleImage.put("Prisons to Replace Easy-Open Locks", "9.jpg");
         titleImage.put("Body Found in Cemetery", "10.jpeg");
         titleImage.put("Parents Keep Kids Home to Protest School Closure", "11.jpeg");
-        titleImage.put("17 Remain Dead in Morgue Shooting Spree", "12.JPG");
-        titleImage.put("Threat Disrupts Plans to Meet About Threats", "13.jpg");
-        titleImage.put("Midget Sues Grocer, Cites Belittling Remarks", "14.jpg");
-        titleImage.put("Police Thwarted by Goat Stuck on Roof who 'only respects one man'", "15.jpg");
+        titleImage.put("17 Remain Dead in Morgue Shooting Spree", "12-1.JPG");
+        titleImage.put("Threat Disrupts Plans to Meet About Threats", "13-1.jpeg");
+        titleImage.put("Midget Sues Grocer, Cites Belittling Remarks", "14-1.jpg");
+        titleImage.put("Police Thwarted by Goat Stuck on Roof who 'only respects one man'", "15-1.jpg");
         titleImage.put("Diana was still alive hours before she died", "16.gif");
         titleImage.put("One-Armed Man Applauds the Kindness of Strangers", "17.jpg");
         titleImage.put("Plane Forced to Land at Airport", "18.jpg");
         titleImage.put("Police Team Heroically Ends 6 Hour Standoff with Empty Apartment", "19.jpg");
+        titleImage.put("Psychic Arrested Again. Still Didn't See it Coming.", "20.jpeg");
 
         for (String key : titleImage.keySet()) {
             String title = key;
             String imagePath = "/images/article-images/" + titleImage.get(key);
             Random t = new Random();
             Journalist journalist = journalists.get(t.nextInt(journalists.size()-0) + 0);
-
-            Article article = new Article(journalist, title, getRandomDate(), CategoryType.World, imagePath, "This is summary test.", strArticle);
+            Article article = new Article(journalist, title, getRandomDate(), CategoryType.getRandomType(), imagePath, "This is summary test.", strArticle);
             Random d = new Random(); int hits = d.nextInt(250-50) + 50; article.setArticleHits(hits);
             DBHelper.save(article);
             applyRandomRating(article);
@@ -100,7 +100,5 @@ public class Test {
             Rating articleRating = new Rating(article, rating);
             DBHelper.save(articleRating);
         }
-
     }
-
 }

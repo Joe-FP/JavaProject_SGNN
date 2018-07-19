@@ -97,15 +97,15 @@ div.polaroid-container{
 
 
 div.polaroid {
-    width: 30%;
+    width: 22vw;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin:0.5%;
     /*margin-bottom: 25px;*/
     text-align: center;
     /*display: flex;*/
-    flex-grow: 2;
-    flex: 1 0 20%;
+    /*flex-grow: 2;*/
+    /*flex: 1 0 20%;*/
 }
 
 div.polaroid-article-header {
