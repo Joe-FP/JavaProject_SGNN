@@ -1,3 +1,19 @@
+Java paired project review:
+
+Really enjoyed working on this project, especially backend and the controller files. See specifically:
+
+ -  src/main/java/db/DBHelper
+ -  src/main/java/controllers/ArticleController
+ 
+Given more time I would:
+
+ -  Add a homepage with a login for the admin
+ -  Allow files to be chosen from any location as opposed to a local location (when creating a new article)
+ -  Tidy up the CSS (input text boxes, sizing etc.)
+ -  Also started working on a method of randomly generating articles which I would like to finish
+ 
+ Project brief below:
+
 ## SGNN News
 
 What'**s** **G**oi**n**' O**n** News have asked you to build a web application to allow them to upload the latest Scottish news.
