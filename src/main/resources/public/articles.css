@@ -1,5 +1,5 @@
 .heading{
-    overflow: hidden;
+
 }
 
 .article-navigation{
@@ -56,8 +56,13 @@ margin: 2.5%;
 }
 
 .article-image img{
-    width: 60%;
-    height: 60%;
+    width: 33%;
+    height: 33%;
+    margin-left: 20%
+}
+
+.article-article{
+    width: 53%;
     margin-left: 20%
 }
 
@@ -71,17 +76,12 @@ margin: 2.5%;
     margin-left: 2.5%;
     margin-right: 2.5%;
     margin-top: 5%;
+    padding-left: 5%;
 }
 
 .article-header{
     font-size: 2.5em;
     margin-left: 0.5em;
-}
-
-.article-article{
-    font-size: 1em;
-    margin-left: 15%;
-    margin-right: 15%;
 }
 
 .article-index{
@@ -97,27 +97,41 @@ div.polaroid-container{
 
 
 div.polaroid {
-    width: 22vw;
+    width: 20vw;
+    height: 20vw;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin:0.5%;
-    /*margin-bottom: 25px;*/
     text-align: center;
-    /*display: flex;*/
-    /*flex-grow: 2;*/
-    /*flex: 1 0 20%;*/
+    position: relative;
+
 }
 
 div.polaroid-article-header {
+    font-weight: bold;
+    margin: 0px;
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
     text-align: center;
-    padding: 10px 20px;
+
+}
+
+div.polaroid-article-date {
+    font-size: 0.75em;
+    font-style: italic;
+    width: 100%;
+    padding-right: 20px;
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    margin-top: 20px;
+
 }
 
 .articles-bottom{
 margin-left:0.5em;
 }
-
-
 
 @media screen and (max-width: 600px) {
     .article-header  {
@@ -127,17 +141,6 @@ margin-left:0.5em;
         display: block;
     }
 
-    div.polaroid {
-        width: 100%;
-        text-align: center;
-        background-color: white;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        padding: 2.5%;
-        margin-bottom: 3%;
-        text-align: center;
-        display: block;
-        font-size: small;
-    }
     div.article-image{
         margin-left: 5%;
     }

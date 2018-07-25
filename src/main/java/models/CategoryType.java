@@ -3,7 +3,6 @@ package models;
 import java.util.Random;
 
 public enum CategoryType {
-
     Weather,
     Business,
     Industry,
@@ -13,7 +12,12 @@ public enum CategoryType {
     World,
     Politics,
     Health,
-    Education;
+    Education,
+    AI,
+    DeepLearning,
+    History,
+    Ethics,
+    Future;
 
     public static CategoryType getRandomType() {
         Random random = new Random();
