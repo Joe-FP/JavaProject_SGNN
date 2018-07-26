@@ -25,6 +25,10 @@ public class Test {
                 {"Abby Norman", "NASA: AI Will Lead the Future of Space Explortion", "2017-06-27", "10.jpg" } ,
                 {"Ava Chisling", "The Pivotal Role AI Plays in the Future of Space Travel", "2017-04-20", "11.jpeg" } ,
                 {"Steven Levy", "What Deep Blue Tells Us About AI in 2017", "2017-05-23", "12.jpeg" } ,
+                {"Ina Fried", "Three Books Consider What Happens When the Robots Take Over", "2018-07-09", "13.jpg" } ,
+                {"Tad Friend", "How Frightened Should We Be Of AI?", "2018-05-14", "14.jpeg" } ,
+                {"Nathan Sinnott", "How Machine Learning is Changing the World - and Your Everyday Life", "2018-04-18", "15.jpg" } ,
+                {"Adrian Rosebrock", "Face recognition with OpenCV, Python, and deep learning", "2018-06-18", "16.jpg" }
         };
 
         String strArticle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum venenatis urna at libero scelerisque dignissim malesuada eget mi. Morbi eget nulla pharetra arcu tempus ullamcorper ac id nulla. Phasellus ante neque, feugiat eu volutpat sed, blandit nec leo. Etiam luctus nulla velit, sed ullamcorper leo ultricies lobortis. Cras rhoncus fermentum nulla at faucibus. Praesent sodales neque in lorem commodo, eget imperdiet lectus congue. Duis quis turpis turpis. Nam eleifend at leo fringilla rhoncus.\n" +
