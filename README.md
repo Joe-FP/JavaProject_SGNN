@@ -7,10 +7,10 @@ This short project was very enjoyable, especially the backend and controller fil
  
 Given more time I would:
 
- -  Add a homepage with a login for the admin
- -  Allow files to be chosen from any location as opposed to a local location (when creating a new article)
- -  Tidy up the CSS (input text boxes, sizing etc.)
- -  Also started working on a method of randomly generating articles which I would like to finish
+ -  Add a homepage with a login for the admin.
+ -  Allow files to be chosen from any location as opposed to a local location (when creating a new article).
+ -  Tidy up the CSS (input text boxes, sizing etc.).
+ -  Also started working on a method of randomly generating articles which I would like to finish.
  
  Project brief below:
  
