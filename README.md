@@ -2,8 +2,8 @@
 
 This short project was very enjoyable, especially the backend and controller files. See specifically:
 
- - [Here -- line 820:](src/main/java/db/DBHelper.java)
- - [Here -- line 820:](src/main/java/controllers/ArticleController.java)
+ - [src/main/java/db/DBHelper.java](src/main/java/db/DBHelper.java)
+ - [src/main/java/controllers/ArticleController.java](src/main/java/controllers/ArticleController.java)
  
 Given more time I would:
 
