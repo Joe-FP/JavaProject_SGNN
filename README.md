@@ -2,8 +2,8 @@
 
 This short project was very enjoyable, especially the backend and controller files. See specifically:
 
- -  src/main/java/db/DBHelper
- -  src/main/java/controllers/ArticleController
+ - [Here -- line 820:](src/main/java/db/DBHelper.java)
+ - [Here -- line 820:](src/main/java/controllers/ArticleController.java)
  
 Given more time I would:
 
@@ -14,9 +14,6 @@ Given more time I would:
  
  Project brief below:
  
-[Here -- line 820:](standard_modules/modGather.txt)
-
-
 ## SGNN News
 
 What'**s** **G**oi**n**' O**n** News have asked you to build a web application to allow them to upload the latest Scottish news.
