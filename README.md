@@ -1,6 +1,6 @@
-Java paired project review:
+ ## Java Paired Project
 
-Really enjoyed working on this project, especially backend and the controller files. See specifically:
+This short project was very enjoyable, especially the backend and controller files. See specifically:
 
  -  src/main/java/db/DBHelper
  -  src/main/java/controllers/ArticleController
@@ -13,6 +13,9 @@ Given more time I would:
  -  Also started working on a method of randomly generating articles which I would like to finish
  
  Project brief below:
+ 
+[Here -- line 820:](standard_modules/modGather.txt)
+
 
 ## SGNN News
 
